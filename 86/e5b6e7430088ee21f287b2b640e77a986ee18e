@@ -1,0 +1,29 @@
+src/build.py
+  s_d6f5d080493362::t_2aa6cf12b4e4cc 93
+  s_d6f5d080493362::t_e240c1c6250f8b 41-47,60-62,67-68
+dist/act1-body.html
+  s_d6f5d080493362::t_d581acc9ff252d 1
+src/act1.html
+  s_d6f5d080493362::t_2aa6cf12b4e4cc 1
+  s_d6f5d080493362::t_e240c1c6250f8b 242,300,311,330,342,352-353,363,374
+README.md
+  s_d6f5d080493362::t_e240c1c6250f8b 19-22
+dist/NUS_Act1.html
+  s_d6f5d080493362::t_d581acc9ff252d 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "86e5b6e7430088ee21f287b2b640e77a986ee18e",
+  "prompts": {},
+  "sessions": {
+    "s_d6f5d080493362": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05d9d-f89e-73b0-a4b3-76f4398565d5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Bharath Krishnamachari <222831533+bharath-cero@users.noreply.github.com>"
+    }
+  }
+}
