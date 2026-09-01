@@ -56,11 +56,11 @@ Remaining budget: **9.5 minutes for Acts II–IV and the close.**
 | - | ----- | ----- | --- |
 | 1 | Hello — name huge, role, delivery hero, NUS alumnus badge | 0 | 1 |
 | 2 | Slido — "what do you want out of the next 45 minutes?" open text | 0 | 2 |
-| 3 | The trail — 8 career nodes with embedded official brand marks | 8 | 4 |
-| 4 | HUSTLE — three anecdotes | 4 | 3 |
-| 5 | Career map vs ladder — ladder, map, Jason Shah quote + QR | 3 | 2.5 |
+| 3 | The trail — 7 career chapters, colour-coded by pivot type | 7 | 4 |
+| 4 | Initiative creates options — three anecdotes | 4 | 3 |
+| 5 | Career map vs ladder — learning versus position, with a small source QR | 3 | 2.5 |
 | 6 | The learning check — three questions, rate-of-learning, the price | 5 | 2 |
-| 7 | Why this matters more now — segue to Act II | 3 | 1 |
+| 7 | Why this matters more now — judgment is the scarce constraint | 3 | 1 |
 
 The trail is the spine: slide 4's three anecdotes are each the *mechanism* behind
 a specific jump on it (visibility → the 2010 US move; the cold ask → the 2012
@@ -77,8 +77,8 @@ through how he chose. **Don't break that link.**
   corporate strategy**, New York. *This is the pivot he most wants to speak to.*
   Marked in brick red on the trail for that reason.
 - **2014** Groupon / **ideeli.com**, New York — fashion e-commerce
-- **2016** **Glu Mobile**, San Francisco — mobile games (show the EA mark
-  alongside; EA acquired Glu in 2021, after he left)
+- **2016–18** **Glu Mobile**, San Francisco — Big Data + Product Data Science
+  (show the EA mark alongside; EA acquired Glu in 2021, after he left)
 - **2018** **Deloitte** — *Southeast Asia focus*, not Singapore only.
 - **2021 →** **Delivery Hero** — show Berlin, Singapore, Istanbul
 

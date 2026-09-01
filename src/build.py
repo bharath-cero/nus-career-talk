@@ -38,7 +38,6 @@ QR_TARGETS = {
 # and works without venue wifi. The source URLs and provenance live in
 # docs/content-sources.md.
 LOGO_ASSETS = {
-    "../assets/logos/nus.svg": "nus.svg",
     "../assets/logos/ubs.svg": "ubs.svg",
     "../assets/logos/groupon.svg": "groupon.svg",
     "../assets/logos/glu-mobile.svg": "glu-mobile.svg",
