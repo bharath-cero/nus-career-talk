@@ -38,13 +38,13 @@ QR_TARGETS = {
 # and works without venue wifi. The source URLs and provenance live in
 # docs/content-sources.md.
 LOGO_ASSETS = {
-    "LOGO_NUS": "nus.svg",
-    "LOGO_UBS": "ubs.svg",
-    "LOGO_GROUPON": "groupon.svg",
-    "LOGO_GLU": "glu-mobile.svg",
-    "LOGO_EA": "ea.svg",
-    "LOGO_DELOITTE": "deloitte.svg",
-    "LOGO_DELIVERY_HERO": "delivery-hero.svg",
+    "../assets/logos/nus.svg": "nus.svg",
+    "../assets/logos/ubs.svg": "ubs.svg",
+    "../assets/logos/groupon.svg": "groupon.svg",
+    "../assets/logos/glu-mobile.svg": "glu-mobile.svg",
+    "../assets/logos/ea.svg": "ea.svg",
+    "../assets/logos/deloitte.svg": "deloitte.svg",
+    "../assets/logos/delivery-hero.svg": "delivery-hero.svg",
 }
 
 FG = "#1F1915"   # --ink
@@ -57,16 +57,15 @@ def build():
         src = f.read()
 
     logo_dir = os.path.join(ROOT, "assets", "logos")
-    for token, filename in LOGO_ASSETS.items():
-        marker = "<!--%s-->" % token
-        if marker not in src:
-            print("  ! logo token %s has no marker in the source — skipped" % token)
+    for source_ref, filename in LOGO_ASSETS.items():
+        if source_ref not in src:
+            print("  ! logo reference %s is not used in the source — skipped" % source_ref)
             continue
         asset_path = os.path.join(logo_dir, filename)
         with open(asset_path, "rb") as f:
             encoded = base64.b64encode(f.read()).decode("ascii")
-        src = src.replace(marker, "data:image/svg+xml;base64," + encoded)
-        print("  %s <- %s" % (token, os.path.relpath(asset_path, ROOT)))
+        src = src.replace(source_ref, "data:image/svg+xml;base64," + encoded)
+        print("  embedded %s" % os.path.relpath(asset_path, ROOT))
 
     for token, url in QR_TARGETS.items():
         marker = "<!--%s-->" % token
@@ -91,7 +90,7 @@ def build():
 
     head, rest = src.split('<div id="viewport">', 1)
     standalone = (
-        '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+        '<!doctype html>\n<html lang="en">\n<head>\n'
         '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
         + head + '</head>\n<body>\n<div id="viewport">' + rest + '\n</body>\n</html>\n'
     )

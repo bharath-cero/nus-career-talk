@@ -16,8 +16,10 @@ python3 src/build.py          # no dependencies, stdlib only
 open dist/NUS_Act1.html       # or just double-click it
 ```
 
-The deck is one file with no external assets except Google Fonts. It degrades to
-system fonts if the venue wifi is down.
+The built deck is one file with no external assets except Google Fonts. The
+editable source page loads its vendored logos from `assets/logos/`; the build
+embeds those same files as data URIs. It degrades to system fonts if the venue
+wifi is down.
 
 ## Presenting
 
