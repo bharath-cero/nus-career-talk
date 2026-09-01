@@ -1,0 +1,29 @@
+dist/NUS_Act1.html
+  s_d6f5d080493362::t_e67111125efafb 287,327-328,364-371
+  s_d6f5d080493362::t_dd44fdb7142315 285,288,292-295,302-307,312-316,321-325,333-338,343-349,354-359
+  s_d6f5d080493362::t_494942b3b0193f 296-297,326
+dist/act1-body.html
+  s_d6f5d080493362::t_e67111125efafb 281,321-322,358-365
+  s_d6f5d080493362::t_dd44fdb7142315 279,282,286-289,296-301,306-310,315-319,327-332,337-343,348-353
+  s_d6f5d080493362::t_494942b3b0193f 290-291,320
+src/act1.html
+  s_d6f5d080493362::t_6bbea30a3e31d4 281,321-322,358-365
+  s_d6f5d080493362::t_b94632a6f91409 290-291,320
+  s_d6f5d080493362::t_0a1dce13f6f6a5 279,282,286-289,296-301,306-310,315-319,327-332,337-343,348-353
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0aa47fdb0dbfbe6a4f41fc9782c131d4f2bcc6b6",
+  "prompts": {},
+  "sessions": {
+    "s_d6f5d080493362": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05d9d-f89e-73b0-a4b3-76f4398565d5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Bharath Krishnamachari <222831533+bharath-cero@users.noreply.github.com>"
+    }
+  }
+}
