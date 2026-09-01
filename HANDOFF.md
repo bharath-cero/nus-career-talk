@@ -70,7 +70,8 @@ through how he chose. **Don't break that link.**
 ### Career facts — verified against his CV and LinkedIn, get these right
 
 - **2008** graduated NUS, B.Eng Computer Engineering, minor Financial Mathematics
-- **2008** UBS **Singapore**, technology (Group Finance IT)
+- **2008** UBS **Singapore**, Graduate Trainee in technology (Group Finance IT),
+  in a learning-focused programme that included a two-month London rotation
 - **2010** relocated *with UBS* to **Stamford, CT** — the bank moved him, it was
   not a job change. An earlier draft wrongly said New York in 2008.
 - **2012** UBS Investment Bank Technology → **UBS Wealth Management Americas,
