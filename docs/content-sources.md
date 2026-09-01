@@ -175,3 +175,16 @@ German, by him. The fullest statement of his AI-enterprise thesis. **For Act III
 
 Used for dates, titles and geography. The canonical career facts, with the
 corrections that were needed, are in [../HANDOFF.md](../HANDOFF.md).
+
+## 9. Brand marks
+
+Official marks are vendored in `assets/logos/` and embedded into the built HTML
+as data URIs. They remain the property of their respective trademark owners.
+
+- NUS: OpenCerts repository, `public/static/images/NUS_logo.svg`
+- UBS: Wikimedia, `File:UBS Logo.svg`
+- Groupon: Wikimedia Commons, `File:Groupon Logo.svg`
+- Glu Mobile: Wikimedia Commons, `File:Glu Mobile logo.svg`
+- Electronic Arts: Wikimedia Commons, `File:Electronic Arts logo black.svg`
+- Deloitte: Wikimedia Commons, `File:Logo of Deloitte.svg`
+- Delivery Hero: Wikimedia Commons, `File:Delivery Hero Logo.svg`

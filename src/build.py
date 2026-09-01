@@ -12,6 +12,7 @@ Takes the source deck in src/, injects real scannable QR codes in place of
 Usage:  python3 src/build.py
 """
 
+import base64
 import os
 import sys
 
@@ -33,6 +34,19 @@ QR_TARGETS = {
     # "QR_SLIDO": "https://app.sli.do/event/XXXXXXXX",   # <- add when available
 }
 
+# Official brand marks are vendored so the built deck stays fully self-contained
+# and works without venue wifi. The source URLs and provenance live in
+# docs/content-sources.md.
+LOGO_ASSETS = {
+    "LOGO_NUS": "nus.svg",
+    "LOGO_UBS": "ubs.svg",
+    "LOGO_GROUPON": "groupon.svg",
+    "LOGO_GLU": "glu-mobile.svg",
+    "LOGO_EA": "ea.svg",
+    "LOGO_DELOITTE": "deloitte.svg",
+    "LOGO_DELIVERY_HERO": "delivery-hero.svg",
+}
+
 FG = "#1F1915"   # --ink
 BG = "#FDFAF4"   # --card
 
@@ -41,6 +55,18 @@ def build():
     src_path = os.path.join(ROOT, "src", "act1.html")
     with open(src_path, encoding="utf-8") as f:
         src = f.read()
+
+    logo_dir = os.path.join(ROOT, "assets", "logos")
+    for token, filename in LOGO_ASSETS.items():
+        marker = "<!--%s-->" % token
+        if marker not in src:
+            print("  ! logo token %s has no marker in the source — skipped" % token)
+            continue
+        asset_path = os.path.join(logo_dir, filename)
+        with open(asset_path, "rb") as f:
+            encoded = base64.b64encode(f.read()).decode("ascii")
+        src = src.replace(marker, "data:image/svg+xml;base64," + encoded)
+        print("  %s <- %s" % (token, os.path.relpath(asset_path, ROOT)))
 
     for token, url in QR_TARGETS.items():
         marker = "<!--%s-->" % token

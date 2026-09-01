@@ -56,7 +56,7 @@ Remaining budget: **9.5 minutes for Acts II–IV and the close.**
 | - | ----- | ----- | --- |
 | 1 | Hello — name huge, role, delivery hero, NUS alumnus badge | 0 | 1 |
 | 2 | Slido — "what do you want out of the next 45 minutes?" open text | 0 | 2 |
-| 3 | The trail — 8 career nodes with brand wordmarks, heart at 2018 | 9 | 4 |
+| 3 | The trail — 8 career nodes with embedded official brand marks | 8 | 4 |
 | 4 | HUSTLE — three anecdotes | 4 | 3 |
 | 5 | Career map vs ladder — ladder, map, Jason Shah quote + QR | 3 | 2.5 |
 | 6 | The learning check — three questions, rate-of-learning, the price | 5 | 2 |
@@ -79,8 +79,7 @@ through how he chose. **Don't break that link.**
 - **2014** Groupon / **ideeli.com**, New York — fashion e-commerce
 - **2016** **Glu Mobile**, San Francisco — mobile games (show the EA mark
   alongside; EA acquired Glu in 2021, after he left)
-- **2018** **Deloitte** — *Southeast Asia focus*, not Singapore only. Also the
-  year he met his wife: shown as a heart on its own beat, no text, he speaks to it.
+- **2018** **Deloitte** — *Southeast Asia focus*, not Singapore only.
 - **2021 →** **Delivery Hero** — show Berlin, Singapore, Istanbul
 
 His own framing of the whole arc, from his 2022 post: *"four role profiles, six
@@ -101,10 +100,9 @@ Single light theme on purpose — it also survives a bright lecture hall, which 
 dark deck does not. Every colour is painted explicitly so the page never inherits
 a viewer's dark mode.
 
-**Brand wordmarks are typographic, not real logos.** There is no image access
-from the build environment. They're set in each brand's colour — Deloitte with
-its green full stop, EA in its rounded box. He has been told, and may supply real
-files; if he does, embed them as data URIs, not external links.
+Official NUS, UBS, Groupon, Glu Mobile, Electronic Arts, Deloitte and Delivery
+Hero marks are vendored in `assets/logos/`. The build embeds them as data URIs,
+so the delivered HTML remains self-contained and works without venue wifi.
 
 ## Open items
 
@@ -115,7 +113,6 @@ files; if he does, embed them as data URIs, not external links.
       Delivery Hero + "movement of atoms" on one; the AI enterprise on one;
       "building is cheap" + what's scarce on one; close on one. Content and his
       own phrasing for all of these is in `docs/content-sources.md`.
-- [ ] **Real logo files**, if he sends them.
 - [ ] **Phonetic respelling of his name** on slide 1 — deliberately omitted
       rather than guessed. Only add it if he supplies it.
 - [ ] He has *not* decided whether to trim Act I to protect the back half.

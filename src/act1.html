@@ -174,14 +174,6 @@
   #dots i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--line); display: block; }
   #dots i.on { background: var(--pine); border-color: var(--pine); }
 
-  /* animated heart on the trail */
-  g[data-step].heartpop {
-    transform-box: fill-box; transform-origin: center;
-    transform: scale(.25); opacity: 0;
-    transition: transform .6s cubic-bezier(.2,1.6,.4,1), opacity .35s ease;
-  }
-  g[data-step].heartpop.shown { transform: scale(1); opacity: 1; }
-
   /* intro slide */
   .bigname {
     font-family: "Fraunces", Georgia, serif; font-weight: 800;
@@ -196,7 +188,10 @@
   }
   .wm { font-family: "Inter Tight", "Helvetica Neue", sans-serif; font-weight: 700; letter-spacing: -.012em; }
   .brands { font-family: "Inter Tight", sans-serif; font-size: 14px; color: var(--muted); letter-spacing: .04em; }
+  .brand-logo { display: block; width: auto; max-width: 100%; height: auto; }
+  .brand-logo.dh-main { width: 210px; }
   .vr { width: 1px; background: var(--line); align-self: stretch; }
+  #notes .src { color: var(--muted); font-size: 12px; }
 </style>
 
 <div id="viewport">
@@ -243,14 +238,14 @@
           '<div class="role">Senior Director,<br>Data &amp; AI</div>' +
           '<div class="vr"></div>' +
           '<div>' +
-            '<div class="wm" style="color:#D61F26;font-size:27px;line-height:1">delivery hero</div>' +
+            '<img class="brand-logo dh-main" src="<!--LOGO_DELIVERY_HERO-->" alt="Delivery Hero">' +
             '<div class="brands" style="margin-top:5px">foodpanda &nbsp;·&nbsp; foodora &nbsp;·&nbsp; Yemeksepeti</div>' +
           '</div>' +
         '</div>' +
         '<hr class="rule" style="margin-top:10px">' +
         '<p style="font-size:18px;max-width:none">B.Eng Computer Engineering, minor in Financial Mathematics &nbsp;·&nbsp; <span class="pine">same campus, eighteen years ago</span></p>' +
       '</div>',
-    notes: "The slide you open on while you say hello and ask how everyone's doing. Name is deliberately huge so the room can see how it's spelt and hear you say it once, clearly. Everything else is one glance: role, company, and the alumnus badge &mdash; which is the line that buys you the room's attention, so land it. <em>Say the &ldquo;same campus&rdquo; bit out loud</em>; it does more than any credential. Then straight into the next slide, which is theirs, not yours."
+    notes: "The slide you open on while you say hello and ask how everyone's doing. Name is deliberately huge so the room can see how it's spelt and hear you say it once, clearly. Everything else is one glance: role, company, and the alumnus badge &mdash; which is the line that buys you the room's attention, so land it. <em>Say the &ldquo;same campus&rdquo; bit out loud</em>; it does more than any credential. Then straight into the next slide, which is theirs, not yours.<br><br><span class=\"src\">[Sources] Delivery Hero logo: Wikimedia Commons, File:Delivery Hero Logo.svg.</span>"
   });
 
   /* ───────────────────────── 2 · SLIDO ───────────────────────── */
@@ -293,7 +288,7 @@ S.push({
             '<text y="-23" font-size="8.5" letter-spacing="1.6" fill="var(--muted)" text-anchor="middle">N</text>' +
           '</g>' +
 
-          '<path d="M46 320 C 92 310, 124 296, 168 288 C 214 280, 246 268, 286 250 C 336 228, 376 262, 414 296 C 458 330, 502 264, 542 238 C 584 212, 630 258, 670 284 C 714 312, 762 258, 800 222 C 858 168, 950 166, 1016 140"' +
+          '<path d="M46 320 C 92 310, 124 296, 168 288 C 214 280, 246 268, 286 250 C 336 228, 376 262, 414 296 C 458 330, 502 264, 542 238 C 584 212, 630 258, 670 284 C 714 312, 762 258, 800 222 C 858 168, 930 166, 995 140"' +
             ' fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 7" opacity=".3"/>' +
 
           /* n0 · NUS */
@@ -301,9 +296,9 @@ S.push({
             '<circle cx="46" cy="320" r="8" fill="none" stroke="var(--pine)" stroke-width="2.5"/>' +
             '<text x="46" y="348" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2008</text>' +
             '<text x="46" y="366" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">graduated</text>' +
-            '<text class="wm" x="46" y="392" font-size="19" font-weight="700" fill="#003D7C" text-anchor="middle">NUS</text>' +
-            '<text x="46" y="412" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">Computer Engineering</text>' +
-            '<text x="46" y="426" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">+ Financial Maths</text>' +
+            '<image href="<!--LOGO_NUS-->" x="6" y="372" width="84" height="39" preserveAspectRatio="xMidYMid meet" aria-label="NUS logo"/>' +
+            '<text x="48" y="423" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">Computer Eng.</text>' +
+            '<text x="48" y="437" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">+ Financial Maths</text>' +
           '</g>' +
 
           /* n1 · UBS Singapore */
@@ -312,7 +307,7 @@ S.push({
             '<circle cx="168" cy="288" r="7" fill="var(--pine)"/>' +
             '<text x="168" y="262" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2008</text>' +
             '<text x="168" y="244" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Singapore</text>' +
-            '<text class="wm" x="168" y="220" font-size="20" font-weight="700" fill="#E60100" text-anchor="middle">UBS</text>' +
+            '<image href="<!--LOGO_UBS-->" x="130" y="204" width="76" height="28" preserveAspectRatio="xMidYMid meet" aria-label="UBS logo"/>' +
             '<text x="168" y="203" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">technology</text>' +
           '</g>' +
 
@@ -331,7 +326,8 @@ S.push({
             '<circle cx="414" cy="296" r="14" fill="none" stroke="var(--brick)" stroke-width="2"/>' +
             '<circle cx="414" cy="296" r="7" fill="var(--brick)"/>' +
             '<text x="414" y="270" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2012</text>' +
-            '<text x="414" y="252" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">New York &nbsp;·&nbsp; <tspan class="wm" fill="#E60100" font-size="12.5" font-weight="700">UBS</tspan> Wealth Mgmt</text>' +
+            '<image href="<!--LOGO_UBS-->" x="326" y="239" width="45" height="17" preserveAspectRatio="xMidYMid meet" aria-label="UBS logo"/>' +
+            '<text x="378" y="252" font-size="10.5" fill="var(--muted)" letter-spacing=".25" text-anchor="start">Wealth Management · New York</text>' +
             '<text class="serifsvg" x="414" y="228" font-size="18" fill="var(--brick)" text-anchor="middle">tech &rarr; corporate strategy</text>' +
             '<text x="414" y="207" font-size="9.5" fill="var(--brick)" letter-spacing="2.4" text-anchor="middle">THE SHARP TURN</text>' +
           '</g>' +
@@ -342,7 +338,7 @@ S.push({
             '<circle cx="542" cy="238" r="7" fill="var(--pine)"/>' +
             '<text x="542" y="266" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2014</text>' +
             '<text x="542" y="284" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">New York</text>' +
-            '<text class="wm" x="542" y="308" font-size="19" font-weight="700" fill="#53A318" text-anchor="middle">groupon</text>' +
+            '<image href="<!--LOGO_GROUPON-->" x="495" y="294" width="94" height="20" preserveAspectRatio="xMidYMid meet" aria-label="Groupon logo"/>' +
             '<text x="542" y="326" font-size="10.5" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">ideeli.com &nbsp;·&nbsp; fashion</text>' +
           '</g>' +
 
@@ -352,11 +348,8 @@ S.push({
             '<circle cx="670" cy="284" r="7" fill="var(--pine)"/>' +
             '<text x="670" y="258" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2016</text>' +
             '<text x="670" y="240" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">San Francisco</text>' +
-            '<text class="wm" x="634" y="217" font-size="19" font-weight="700" fill="var(--ink)" text-anchor="start">glu</text>' +
-            '<g transform="translate(672,199)">' +
-              '<rect width="31" height="22" rx="5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>' +
-              '<text class="wm" x="15.5" y="16" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">EA</text>' +
-            '</g>' +
+            '<image href="<!--LOGO_GLU-->" x="630" y="190" width="34" height="36" preserveAspectRatio="xMidYMid meet" aria-label="Glu Mobile logo"/>' +
+            '<image href="<!--LOGO_EA-->" x="676" y="198" width="40" height="24" preserveAspectRatio="xMidYMid meet" aria-label="Electronic Arts logo"/>' +
             '<text x="670" y="182" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">mobile games</text>' +
           '</g>' +
 
@@ -366,28 +359,23 @@ S.push({
             '<circle cx="800" cy="222" r="7" fill="var(--pine)"/>' +
             '<text x="800" y="250" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2018</text>' +
             '<text x="800" y="268" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Southeast Asia</text>' +
-            '<text class="wm" x="800" y="292" font-size="19" font-weight="600" fill="var(--ink)" text-anchor="middle">Deloitte<tspan fill="#86BC25">.</tspan></text>' +
+            '<image href="<!--LOGO_DELOITTE-->" x="758" y="278" width="84" height="18" preserveAspectRatio="xMidYMid meet" aria-label="Deloitte logo"/>' +
             '<text x="800" y="310" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">consulting</text>' +
           '</g>' +
 
-          /* heart */
-          '<g data-step="8" class="heartpop">' +
-            '<path d="M862 178 C 862 168, 850 164, 845 172 C 840 164, 828 168, 828 178 C 828 190, 845 200, 845 200 C 845 200, 862 190, 862 178 Z" fill="var(--brick)"/>' +
-          '</g>' +
-
           /* n7 · Delivery Hero */
-          '<g data-step="9">' +
-            '<path d="M800 222 C 858 168, 950 166, 1016 140" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
-            '<circle cx="1016" cy="140" r="9" fill="var(--pine)"/>' +
-            '<circle cx="1016" cy="140" r="17" fill="none" stroke="var(--pine)" stroke-width="1.5" opacity=".35"/>' +
-            '<text x="1016" y="114" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2021 &rarr;</text>' +
-            '<text x="1016" y="96" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Berlin · Singapore · Istanbul</text>' +
-            '<text class="wm" x="1016" y="72" font-size="19" font-weight="700" fill="#D61F26" text-anchor="middle">delivery hero</text>' +
-            '<text x="1016" y="54" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">data &amp; AI</text>' +
+          '<g data-step="8">' +
+            '<path d="M800 222 C 858 168, 930 166, 995 140" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="995" cy="140" r="9" fill="var(--pine)"/>' +
+            '<circle cx="995" cy="140" r="17" fill="none" stroke="var(--pine)" stroke-width="1.5" opacity=".35"/>' +
+            '<text x="995" y="118" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2021 &rarr;</text>' +
+            '<text x="995" y="98" font-size="10.5" fill="var(--muted)" letter-spacing=".4" text-anchor="middle">Berlin · Singapore · Istanbul</text>' +
+            '<image href="<!--LOGO_DELIVERY_HERO-->" x="930" y="62" width="130" height="21" preserveAspectRatio="xMidYMid meet" aria-label="Delivery Hero logo"/>' +
+            '<text x="995" y="53" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">data &amp; AI</text>' +
           '</g>' +
         '</svg>' +
       '</div>',
-    notes: "<em>Four minutes, one slide, nine presses.</em> Each press draws a leg. Worth landing as you go: you graduated out of this campus into UBS in Singapore; 2010 was the bank moving you, not a job hunt. <b>2012 is the one to dwell on</b> &mdash; investment-bank technology into wealth-management corporate strategy, marked in red because it's the sharpest turn on the trail, and the room needs to hear a pivot like that is available to them. 2014, left a bank for flash-sale fashion. 2016, nothing on the CV said games. 2018, home to Southeast Asia and into consulting with no consulting background. <em>Step 8 is the heart &mdash; say what you want to say about 2018 and move on.</em> Then 2021 to now: same employer, two different jobs, three hubs."
+    notes: "<em>Four minutes, one slide, eight presses.</em> Each press draws a leg. Worth landing as you go: you graduated out of this campus into UBS in Singapore; 2010 was the bank moving you, not a job hunt. <b>2012 is the one to dwell on</b> &mdash; investment-bank technology into wealth-management corporate strategy, marked in red because it's the sharpest turn on the trail, and the room needs to hear a pivot like that is available to them. 2014, left a bank for flash-sale fashion. 2016, nothing on the CV said games. 2018, home to Southeast Asia and into consulting with no consulting background. Then 2021 to now: same employer, two different jobs, three hubs.<br><br><span class=\"src\">[Sources] Brand marks: NUS/OpenCerts; UBS, Groupon, Glu Mobile, Electronic Arts, Deloitte and Delivery Hero/Wikimedia Commons.</span>"
   });
 
   /* ───────────────────────── 4 · HUSTLE ───────────────────────── */
@@ -423,7 +411,7 @@ S.push({
           '</div>' +
         '</div>' +
       '</div>',
-    notes: "Three stories, one press each, about 40 seconds apiece. The headings do the work &mdash; you supply the colour. In 01 the detail that lands is how long you had to keep asking. In 02 it's that you had no standing to send that message and sent it anyway. In 03, name the discomfort: sales, no consulting background, and it's where the commercial instinct came from. <em>Resist adding a moral at the end</em> &mdash; the three stories make the point on their own, and the room will draw it faster than you can say it."
+    notes: "Three stories, one press each, about 40 seconds apiece. The headings do the work &mdash; you supply the colour. In 01 the detail that lands is how long you had to keep asking. In 02 it's that you sent the message cold, backed yourself, and earned the interview. In 03, name the discomfort: sales, no consulting background, and it's where the commercial instinct came from. <em>Resist adding a moral at the end</em> &mdash; the three stories make the point on their own, and the room will draw it faster than you can say it."
   });
 
   /* ───────────────────────── 4 · MAP VS LADDER ───────────────────────── */

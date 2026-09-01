@@ -32,8 +32,8 @@ system fonts if the venue wifi is down.
 | `F` | fullscreen |
 | click | right 75% = next, left 25% = back |
 
-Beats matter: the deck is 7 slides but 26 beats, so nothing appears on screen
-before it has been said out loud.
+Beats matter: the deck is 7 slides with 23 timed reveals, so nothing appears on
+screen before it has been said out loud.
 
 ## Layout
 
@@ -41,6 +41,7 @@ before it has been said out loud.
 src/act1.html      the deck — content, styles and engine in one file
 src/build.py       injects QR codes, emits both dist/ variants
 tools/qrgen.py     QR encoder (byte mode, ECC M, versions 1–10)
+assets/logos/      vendored official brand marks, embedded by the build
 dist/              build output, committed so the deck is presentable from a clone
 docs/              where the content came from, and the design tokens
 ```
