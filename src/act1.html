@@ -1,0 +1,694 @@
+<title>Career Map, Not Career Ladder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    color-scheme: light;
+    --paper:    #F7F3EB;
+    --card:     #FDFAF4;
+    --secondary:#EBE7DF;
+    --ink:      #1F1915;
+    --muted:    #5C534D;
+    --line:     #D6D0C9;
+    --pine:     #005C41;
+    --pine-mid: #008760;
+    --mint:     #D3E2DB;
+    --ochre:    #C68956;
+    --brick:    #AC312C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #viewport { position: fixed; inset: 0; background: var(--paper); display: grid; place-items: center; }
+
+  #stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    transform-origin: center center;
+    background: var(--paper);
+    overflow: hidden;
+  }
+
+  .eyebrow, .index {
+    position: absolute;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .eyebrow { top: 46px; left: 74px; }
+  .eyebrow b { color: var(--pine); font-weight: 500; }
+  .index { bottom: 44px; right: 74px; font-variant-numeric: tabular-nums; }
+  .index i { font-style: normal; color: var(--line); }
+
+  #hair { position: absolute; left: 74px; right: 74px; top: 78px; height: 1px; background: var(--line); }
+
+  .slide { position: absolute; inset: 118px 74px 86px 74px; display: flex; flex-direction: column; justify-content: center; }
+  .slide.top { justify-content: flex-start; }
+
+  /* progressive reveal */
+  [data-step] { opacity: 0; transform: translateY(9px); transition: opacity .42s ease, transform .42s cubic-bezier(.2,.75,.25,1); }
+  [data-step].shown { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-step] { transition: none; }
+  }
+
+  h1, h2, .stmt, .disp {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    margin: 0; text-wrap: balance; font-weight: 700;
+    letter-spacing: -.015em;
+  }
+  h1 { font-size: 68px; line-height: 1.04; }
+  h2 { font-size: 46px; line-height: 1.1; }
+  .stmt { font-size: 38px; line-height: 1.16; }
+  .huge { font-family: "Fraunces", Georgia, serif; font-weight: 800; font-size: 106px; line-height: .88; letter-spacing: -.03em; color: var(--pine); }
+
+  p { font-size: 21px; line-height: 1.55; margin: 0; color: var(--muted); max-width: 34em; }
+  p.lead { font-size: 24px; color: var(--ink); }
+  .pine { color: var(--pine); }
+  .brick { color: var(--brick); }
+
+  .lbl {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--pine);
+  }
+  .stack { display: flex; flex-direction: column; gap: 26px; }
+  .stack.sm { gap: 16px; }
+  .row { display: flex; gap: 54px; }
+  .row.mid { align-items: center; }
+
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+  /* qr */
+  .qrbox { width: 168px; }
+  .qrbox svg { width: 168px; height: 168px; display: block; border: 1px solid var(--line); border-radius: 6px; }
+  .qrbox .cap { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .1em; color: var(--muted); margin-top: 9px; line-height: 1.6; text-transform: uppercase; }
+  .qrph {
+    width: 210px; height: 210px; border: 2px dashed var(--pine); border-radius: 6px;
+    display: grid; place-items: center; text-align: center; background: var(--card);
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--pine); line-height: 2;
+  }
+
+  /* hustle anecdotes */
+  .anec { display: grid; grid-template-columns: 28px 1fr 156px; gap: 18px; align-items: start; padding: 11px 0; border-top: 1px solid var(--line); }
+  .anec .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--pine); padding-top: 6px; }
+  .anec .t { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 23px; line-height: 1.2; color: var(--ink); }
+  .anec .d { font-size: 16.5px; line-height: 1.42; color: var(--muted); margin-top: 5px; }
+  .anec .c { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: var(--pine-mid); text-align: right; padding-top: 8px; line-height: 1.7; }
+
+  /* learning questions */
+  .qq { display: flex; gap: 16px; align-items: baseline; }
+  .qq .m { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; color: var(--pine); flex: none; padding-top: 7px; }
+  .qq .x { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 23px; line-height: 1.22; color: var(--ink); }
+
+  .note { background: var(--card); border-left: 3px solid var(--ochre); padding: 13px 18px; }
+  .note .h { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ochre); margin-bottom: 7px; }
+  .note .b { font-size: 17.5px; line-height: 1.42; color: var(--ink); }
+
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px 16px; }
+  .panel .ph { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+
+  .fig { width: 100%; display: block; }
+  svg text { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .serifsvg { font-family: "Fraunces", Georgia, serif !important; }
+
+  /* overlays */
+  #notes {
+    position: fixed; left: 0; right: 0; bottom: 0; max-height: 44vh; overflow-y: auto;
+    background: var(--card); border-top: 2px solid var(--pine);
+    padding: 16px 30px 20px; display: none; z-index: 40;
+    box-shadow: 0 -14px 34px rgba(31,25,21,.10);
+  }
+  #notes.on { display: block; }
+  #notes .nh { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--pine); margin-bottom: 8px; }
+  #notes .nb { font-size: 15px; line-height: 1.62; color: var(--ink); max-width: 108ch; }
+  #notes .nb em { color: var(--pine); font-style: normal; font-weight: 600; }
+  #notes .nb b { color: var(--brick); font-weight: 600; }
+
+  #grid { position: fixed; inset: 0; background: var(--paper); padding: 30px; overflow-y: auto; display: none; z-index: 50; }
+  #grid.on { display: block; }
+  #grid .gh { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  #gridwrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .thumb {
+    background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--line);
+    border-radius: 5px; padding: 14px 16px; cursor: pointer; text-align: left; color: var(--ink);
+    font-family: inherit; display: flex; flex-direction: column; gap: 7px; min-height: 88px;
+  }
+  .thumb:hover, .thumb:focus-visible { border-color: var(--pine); outline: none; }
+  .thumb.cur { border-left-color: var(--pine); background: var(--mint); }
+  .thumb .tn { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+  .thumb .tt { font-family: "Fraunces", Georgia, serif; font-size: 17px; font-weight: 700; line-height: 1.2; }
+  .thumb .tm { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; color: var(--pine); letter-spacing: .08em; }
+
+  #hud {
+    position: fixed; top: 12px; right: 16px; z-index: 45;
+    display: flex; gap: 10px; align-items: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--muted);
+  }
+  #clock { font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+  #clock.run { color: var(--pine); font-weight: 500; }
+  #hud button {
+    font: inherit; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--card); color: var(--muted); border: 1px solid var(--line);
+    border-radius: 4px; padding: 5px 9px; cursor: pointer;
+  }
+  #hud button:hover, #hud button:focus-visible { color: var(--pine); border-color: var(--pine); outline: none; }
+
+  #help {
+    position: fixed; bottom: 10px; left: 16px; z-index: 45;
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px;
+    letter-spacing: .08em; color: var(--muted); opacity: .55;
+  }
+  #dots { position: absolute; bottom: 44px; left: 74px; display: flex; gap: 6px; align-items: center; }
+  #dots i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--line); display: block; }
+  #dots i.on { background: var(--pine); border-color: var(--pine); }
+
+  /* animated heart on the trail */
+  g[data-step].heartpop {
+    transform-box: fill-box; transform-origin: center;
+    transform: scale(.25); opacity: 0;
+    transition: transform .6s cubic-bezier(.2,1.6,.4,1), opacity .35s ease;
+  }
+  g[data-step].heartpop.shown { transform: scale(1); opacity: 1; }
+
+  /* intro slide */
+  .bigname {
+    font-family: "Fraunces", Georgia, serif; font-weight: 800;
+    font-size: 108px; line-height: .95; letter-spacing: -.038em; color: var(--ink);
+  }
+  .role { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 29px; color: var(--pine); line-height: 1.15; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
+    border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 15px;
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  }
+  .wm { font-family: "Inter Tight", "Helvetica Neue", sans-serif; font-weight: 700; letter-spacing: -.012em; }
+  .brands { font-family: "Inter Tight", sans-serif; font-size: 14px; color: var(--muted); letter-spacing: .04em; }
+  .vr { width: 1px; background: var(--line); align-self: stretch; }
+</style>
+
+<div id="viewport">
+  <div id="stage">
+    <div id="hair"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <div class="index" id="idx"></div>
+    <div id="dots"></div>
+    <div class="slide" id="slide"></div>
+  </div>
+</div>
+
+<div id="hud">
+  <span id="clock">00:00</span>
+  <button id="btimer" type="button" title="Start / pause (T)">Timer</button>
+  <button id="bnotes" type="button" title="Notes (N)">Notes</button>
+  <button id="bgrid" type="button" title="All slides (O)">Slides</button>
+</div>
+
+<div id="help">→ next beat · ← back · O all slides · N notes · T timer · F fullscreen</div>
+
+<div id="notes"><div class="nh" id="nh"></div><div class="nb" id="nb"></div></div>
+
+<div id="grid">
+  <div class="gh" id="gh">Act I — click to jump · Esc to close</div>
+  <div id="gridwrap"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var S = [];
+
+  /* ───────────────────────── 1 · INTRO ───────────────────────── */
+  S.push({
+    act: "NUS · Faculty of Science", wp: "Career Accelerator Programme",
+    title: "Hello", min: 1,
+    html:
+      '<div class="stack" style="gap:20px">' +
+        '<div class="badge"><span class="wm" style="color:#003D7C;font-size:13px">NUS</span> Alumnus &nbsp;·&nbsp; Class of 2008</div>' +
+        '<div class="bigname">Bharath<br>Krishnamachari</div>' +
+        '<div class="row mid" style="gap:24px;margin-top:8px">' +
+          '<div class="role">Senior Director,<br>Data &amp; AI</div>' +
+          '<div class="vr"></div>' +
+          '<div>' +
+            '<div class="wm" style="color:#D61F26;font-size:27px;line-height:1">delivery hero</div>' +
+            '<div class="brands" style="margin-top:5px">foodpanda &nbsp;·&nbsp; foodora &nbsp;·&nbsp; Yemeksepeti</div>' +
+          '</div>' +
+        '</div>' +
+        '<hr class="rule" style="margin-top:10px">' +
+        '<p style="font-size:18px;max-width:none">B.Eng Computer Engineering, minor in Financial Mathematics &nbsp;·&nbsp; <span class="pine">same campus, eighteen years ago</span></p>' +
+      '</div>',
+    notes: "The slide you open on while you say hello and ask how everyone's doing. Name is deliberately huge so the room can see how it's spelt and hear you say it once, clearly. Everything else is one glance: role, company, and the alumnus badge &mdash; which is the line that buys you the room's attention, so land it. <em>Say the &ldquo;same campus&rdquo; bit out loud</em>; it does more than any credential. Then straight into the next slide, which is theirs, not yours."
+  });
+
+  /* ───────────────────────── 2 · SLIDO ───────────────────────── */
+S.push({
+    act: "NUS · Faculty of Science", wp: "Career Accelerator Programme",
+    title: "Over to you", min: 2,
+    html:
+      '<div class="row mid" style="gap:64px">' +
+        '<div class="stack" style="flex:1.25">' +
+          '<div class="lbl">Before I say anything about myself</div>' +
+          '<h1>What do you want<br>out of the next<br>45 minutes?</h1>' +
+          '<p class="lead">Type it in. I&rsquo;ll shape what I say around your answers &mdash; and I&rsquo;ll come back to them at the end.</p>' +
+        '</div>' +
+        '<div style="flex:0 0 auto">' +
+          '<div class="qrph">Paste<br>Slido QR<br>here</div>' +
+          '<div class="cap" style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);margin-top:12px;text-align:center">slido.com &nbsp;/&nbsp; # code</div>' +
+        '</div>' +
+      '</div>' +
+      '<hr class="rule" style="margin-top:38px">' +
+      '<p style="margin-top:16px;font-size:17px">Bharath Krishnamachari &nbsp;·&nbsp; Data &amp; AI, Delivery Hero &mdash; foodpanda, foodora, Yemeksepeti &nbsp;·&nbsp; <span class="pine">NUS Computer Engineering, Class of 2008</span></p>',
+    notes: "Open on them, not you. One line of who you are at the bottom is enough &mdash; resist expanding it. Set the contract: I&rsquo;ll talk for about 25 minutes, then the last 15 are yours. <em>Open text, not a word cloud</em> &mdash; you want sentences you can quote back. Let it fill for 60&ndash;90 seconds, read two or three out loud, then move. Keep the tab open; you&rsquo;ll return to these in Q&amp;A."
+  });
+
+  /* ───────────────────────── 3 · THE TRAIL ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "The trail", title: "The trail", min: 4,
+    html:
+      '<div class="stack" style="gap:10px">' +
+        '<div class="lbl">Eighteen years · six industries · three continents · not one bit of it planned</div>' +
+        '<svg class="fig" viewBox="0 0 1090 462" aria-label="A winding trail through every career move from 2008 to today">' +
+
+          '<g fill="none" stroke="var(--line)" stroke-width="1">' +
+            '<path d="M-20 300 C 140 268, 250 322, 400 296 S 700 236, 1110 272"/>' +
+            '<path d="M-20 366 C 150 332, 268 390, 420 362 S 720 298, 1110 336"/>' +
+            '<path d="M-20 112 C 180 80, 320 126, 500 98 S 820 46, 1110 72"/>' +
+          '</g>' +
+          '<g transform="translate(80,86)" opacity=".45">' +
+            '<circle r="19" fill="none" stroke="var(--line)"/>' +
+            '<path d="M0 -15 L3.5 -2 L0 11 L-3.5 -2 Z" fill="var(--ochre)"/>' +
+            '<text y="-23" font-size="8.5" letter-spacing="1.6" fill="var(--muted)" text-anchor="middle">N</text>' +
+          '</g>' +
+
+          '<path d="M46 320 C 92 310, 124 296, 168 288 C 214 280, 246 268, 286 250 C 336 228, 376 262, 414 296 C 458 330, 502 264, 542 238 C 584 212, 630 258, 670 284 C 714 312, 762 258, 800 222 C 858 168, 950 166, 1016 140"' +
+            ' fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 7" opacity=".3"/>' +
+
+          /* n0 · NUS */
+          '<g data-step="1">' +
+            '<circle cx="46" cy="320" r="8" fill="none" stroke="var(--pine)" stroke-width="2.5"/>' +
+            '<text x="46" y="348" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2008</text>' +
+            '<text x="46" y="366" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">graduated</text>' +
+            '<text class="wm" x="46" y="392" font-size="19" font-weight="700" fill="#003D7C" text-anchor="middle">NUS</text>' +
+            '<text x="46" y="412" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">Computer Engineering</text>' +
+            '<text x="46" y="426" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">+ Financial Maths</text>' +
+          '</g>' +
+
+          /* n1 · UBS Singapore */
+          '<g data-step="2">' +
+            '<path d="M46 320 C 92 310, 124 296, 168 288" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="168" cy="288" r="7" fill="var(--pine)"/>' +
+            '<text x="168" y="262" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2008</text>' +
+            '<text x="168" y="244" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Singapore</text>' +
+            '<text class="wm" x="168" y="220" font-size="20" font-weight="700" fill="#E60100" text-anchor="middle">UBS</text>' +
+            '<text x="168" y="203" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">technology</text>' +
+          '</g>' +
+
+          /* n2 · Stamford */
+          '<g data-step="3">' +
+            '<path d="M168 288 C 214 280, 246 268, 286 250" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="286" cy="250" r="7" fill="var(--pine)"/>' +
+            '<text x="286" y="278" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2010</text>' +
+            '<text x="286" y="296" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Stamford, CT</text>' +
+            '<text x="286" y="318" font-size="11" fill="var(--pine)" letter-spacing=".3" text-anchor="middle">relocated with the bank</text>' +
+          '</g>' +
+
+          /* n3 · the pivot */
+          '<g data-step="4">' +
+            '<path d="M286 250 C 336 228, 376 262, 414 296" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="414" cy="296" r="14" fill="none" stroke="var(--brick)" stroke-width="2"/>' +
+            '<circle cx="414" cy="296" r="7" fill="var(--brick)"/>' +
+            '<text x="414" y="270" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2012</text>' +
+            '<text x="414" y="252" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">New York &nbsp;·&nbsp; <tspan class="wm" fill="#E60100" font-size="12.5" font-weight="700">UBS</tspan> Wealth Mgmt</text>' +
+            '<text class="serifsvg" x="414" y="228" font-size="18" fill="var(--brick)" text-anchor="middle">tech &rarr; corporate strategy</text>' +
+            '<text x="414" y="207" font-size="9.5" fill="var(--brick)" letter-spacing="2.4" text-anchor="middle">THE SHARP TURN</text>' +
+          '</g>' +
+
+          /* n4 · Groupon / ideeli */
+          '<g data-step="5">' +
+            '<path d="M414 296 C 458 330, 502 264, 542 238" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="542" cy="238" r="7" fill="var(--pine)"/>' +
+            '<text x="542" y="266" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2014</text>' +
+            '<text x="542" y="284" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">New York</text>' +
+            '<text class="wm" x="542" y="308" font-size="19" font-weight="700" fill="#53A318" text-anchor="middle">groupon</text>' +
+            '<text x="542" y="326" font-size="10.5" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">ideeli.com &nbsp;·&nbsp; fashion</text>' +
+          '</g>' +
+
+          /* n5 · Glu + EA */
+          '<g data-step="6">' +
+            '<path d="M542 238 C 584 212, 630 258, 670 284" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="670" cy="284" r="7" fill="var(--pine)"/>' +
+            '<text x="670" y="258" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2016</text>' +
+            '<text x="670" y="240" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">San Francisco</text>' +
+            '<text class="wm" x="634" y="217" font-size="19" font-weight="700" fill="var(--ink)" text-anchor="start">glu</text>' +
+            '<g transform="translate(672,199)">' +
+              '<rect width="31" height="22" rx="5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>' +
+              '<text class="wm" x="15.5" y="16" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">EA</text>' +
+            '</g>' +
+            '<text x="670" y="182" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">mobile games</text>' +
+          '</g>' +
+
+          /* n6 · Deloitte */
+          '<g data-step="7">' +
+            '<path d="M670 284 C 714 312, 762 258, 800 222" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="800" cy="222" r="7" fill="var(--pine)"/>' +
+            '<text x="800" y="250" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2018</text>' +
+            '<text x="800" y="268" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Southeast Asia</text>' +
+            '<text class="wm" x="800" y="292" font-size="19" font-weight="600" fill="var(--ink)" text-anchor="middle">Deloitte<tspan fill="#86BC25">.</tspan></text>' +
+            '<text x="800" y="310" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">consulting</text>' +
+          '</g>' +
+
+          /* heart */
+          '<g data-step="8" class="heartpop">' +
+            '<path d="M862 178 C 862 168, 850 164, 845 172 C 840 164, 828 168, 828 178 C 828 190, 845 200, 845 200 C 845 200, 862 190, 862 178 Z" fill="var(--brick)"/>' +
+          '</g>' +
+
+          /* n7 · Delivery Hero */
+          '<g data-step="9">' +
+            '<path d="M800 222 C 858 168, 950 166, 1016 140" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+            '<circle cx="1016" cy="140" r="9" fill="var(--pine)"/>' +
+            '<circle cx="1016" cy="140" r="17" fill="none" stroke="var(--pine)" stroke-width="1.5" opacity=".35"/>' +
+            '<text x="1016" y="114" font-size="13" fill="var(--ink)" letter-spacing="1.2" text-anchor="middle">2021 &rarr;</text>' +
+            '<text x="1016" y="96" font-size="11" fill="var(--muted)" letter-spacing=".6" text-anchor="middle">Berlin · Singapore · Istanbul</text>' +
+            '<text class="wm" x="1016" y="72" font-size="19" font-weight="700" fill="#D61F26" text-anchor="middle">delivery hero</text>' +
+            '<text x="1016" y="54" font-size="10" fill="var(--muted)" letter-spacing=".3" text-anchor="middle">data &amp; AI</text>' +
+          '</g>' +
+        '</svg>' +
+      '</div>',
+    notes: "<em>Four minutes, one slide, nine presses.</em> Each press draws a leg. Worth landing as you go: you graduated out of this campus into UBS in Singapore; 2010 was the bank moving you, not a job hunt. <b>2012 is the one to dwell on</b> &mdash; investment-bank technology into wealth-management corporate strategy, marked in red because it's the sharpest turn on the trail, and the room needs to hear a pivot like that is available to them. 2014, left a bank for flash-sale fashion. 2016, nothing on the CV said games. 2018, home to Southeast Asia and into consulting with no consulting background. <em>Step 8 is the heart &mdash; say what you want to say about 2018 and move on.</em> Then 2021 to now: same employer, two different jobs, three hubs."
+  });
+
+  /* ───────────────────────── 4 · HUSTLE ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "Takeaway one of two", title: "HUSTLE", min: 3,
+    html:
+      '<div class="row" style="gap:58px">' +
+        '<div style="flex:.68">' +
+          '<div class="lbl">Takeaway one</div>' +
+          '<div class="huge" style="margin-top:14px">HUSTLE</div>' +
+          '<div data-step="1" style="margin-top:28px">' +
+            '<div class="stmt" style="font-size:24px;line-height:1.36">Stay busy.<br>Take pride in the work.<br>And just ask &mdash; maybe the game<br>master is willing to heed.</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="flex:1.32;padding-top:6px">' +
+          '<div data-step="2" class="anec">' +
+            '<div class="n">01</div>' +
+            '<div><div class="t">Manufacture your visibility</div>' +
+            '<div class="d">A lunch-and-learn series nobody asked for, and months of pestering to get it.</div></div>' +
+            '<div class="c">&rarr; Singapore<br>to the US</div>' +
+          '</div>' +
+          '<div data-step="3" class="anec">' +
+            '<div class="n">02</div>' +
+            '<div><div class="t">The cold ask</div>' +
+            '<div class="d">One message to a Managing Director I had never met, asking for an interview.</div></div>' +
+            '<div class="c">&rarr; tech to<br>strategy</div>' +
+          '</div>' +
+          '<div data-step="4" class="anec">' +
+            '<div class="n">03</div>' +
+            '<div><div class="t">Sink or swim</div>' +
+            '<div class="d">A sales-facing role in an industry I had never worked in. I swam.</div></div>' +
+            '<div class="c">&rarr; a commercial<br>mindset</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>',
+    notes: "Three stories, one press each, about 40 seconds apiece. The headings do the work &mdash; you supply the colour. In 01 the detail that lands is how long you had to keep asking. In 02 it's that you had no standing to send that message and sent it anyway. In 03, name the discomfort: sales, no consulting background, and it's where the commercial instinct came from. <em>Resist adding a moral at the end</em> &mdash; the three stories make the point on their own, and the room will draw it faster than you can say it."
+  });
+
+  /* ───────────────────────── 4 · MAP VS LADDER ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "Takeaway two of two", title: "Map, not ladder", min: 2.5,
+    html:
+      '<div class="stack sm">' +
+        '<div><span class="lbl">Takeaway two</span> &nbsp;<span style="font-family:\'Fraunces\',Georgia,serif;font-size:27px;font-weight:700">Career <span class="pine">map</span>, not career ladder</span></div>' +
+        '<div class="row" style="gap:44px;align-items:flex-start">' +
+
+          '<div data-step="1" style="flex:.78">' +
+            '<svg class="fig" viewBox="0 0 300 300" aria-label="A ladder with a single upward direction and a queue on it">' +
+              '<g stroke="var(--line)" stroke-width="2.5" fill="none">' +
+                '<line x1="95" y1="18" x2="95" y2="282"/><line x1="205" y1="18" x2="205" y2="282"/>' +
+                '<line x1="95" y1="72" x2="205" y2="72"/><line x1="95" y1="128" x2="205" y2="128"/>' +
+                '<line x1="95" y1="184" x2="205" y2="184"/><line x1="95" y1="240" x2="205" y2="240"/>' +
+              '</g>' +
+              '<circle cx="150" cy="240" r="8" fill="var(--muted)"/>' +
+              '<circle cx="150" cy="184" r="8" fill="var(--line)"/>' +
+              '<circle cx="150" cy="128" r="8" fill="var(--line)"/>' +
+              '<path d="M150 222 L150 200" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar)"/>' +
+              '<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--muted)"/></marker></defs>' +
+            '</svg>' +
+            '<div style="text-align:center;margin-top:6px">' +
+              '<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.2em;color:var(--muted)">THE LADDER</div>' +
+              '<p style="font-size:16px;margin:8px auto 0;max-width:26em">One direction. Someone else built it. The rung above you is occupied by a person who isn&rsquo;t leaving.</p>' +
+            '</div>' +
+          '</div>' +
+
+          '<div data-step="2" style="flex:1.32">' +
+            '<svg class="fig" viewBox="0 0 520 300" aria-label="A map with terrain, forking paths, landmarks and a you-are-here marker">' +
+              '<g fill="none" stroke="var(--line)" stroke-width="1">' +
+                '<path d="M10 214 C 90 196, 150 232, 240 214 S 400 178, 512 198"/>' +
+                '<path d="M10 250 C 96 232, 160 268, 250 248 S 410 212, 512 234"/>' +
+                '<path d="M10 106 C 100 86, 168 118, 258 98 S 412 62, 512 82"/>' +
+              '</g>' +
+              '<path d="M118 62 L150 26 L182 62 Z" fill="none" stroke="var(--muted)" stroke-width="1.5"/>' +
+              '<path d="M132 62 L150 42 L168 62 Z" fill="var(--mint)" stroke="none"/>' +
+              '<ellipse cx="404" cy="150" rx="42" ry="19" fill="var(--mint)" stroke="var(--line)"/>' +
+              '<circle cx="290" cy="238" r="5" fill="none" stroke="var(--muted)"/>' +
+              '<circle cx="316" cy="252" r="3" fill="none" stroke="var(--muted)"/>' +
+
+              '<path d="M28 268 C 84 252, 106 208, 158 196 C 206 185, 232 214, 276 200" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+              '<path d="M276 200 C 322 188, 340 132, 392 118 C 440 105, 462 78, 498 56" fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linecap="round"/>' +
+              '<path d="M276 200 C 318 210, 352 246, 410 250" fill="none" stroke="var(--pine)" stroke-width="2" stroke-dasharray="5 5" opacity=".55"/>' +
+              '<path d="M158 196 C 180 158, 212 142, 248 148" fill="none" stroke="var(--pine)" stroke-width="2" stroke-dasharray="5 5" opacity=".55"/>' +
+
+              '<circle cx="276" cy="200" r="7" fill="var(--pine)"/>' +
+              '<circle cx="276" cy="200" r="15" fill="none" stroke="var(--pine)" stroke-width="1.5" opacity=".45"/>' +
+              '<text x="276" y="180" font-size="10.5" letter-spacing="2" fill="var(--pine)" text-anchor="middle">YOU ARE HERE</text>' +
+              '<circle cx="28" cy="268" r="5" fill="var(--muted)"/>' +
+              '<circle cx="498" cy="56" r="5" fill="none" stroke="var(--pine)" stroke-width="2"/>' +
+            '</svg>' +
+            '<div style="text-align:center;margin-top:6px">' +
+              '<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.2em;color:var(--pine)">THE MAP</div>' +
+              '<p style="font-size:16px;margin:8px auto 0;max-width:30em">Terrain, not rungs. Several routes out of where you&rsquo;re standing &mdash; and the sideways ones often gain you height later.</p>' +
+            '</div>' +
+          '</div>' +
+
+          '<div data-step="3" style="flex:.86">' +
+            '<div class="panel">' +
+              '<div class="ph">Jason Shah &middot; Lenny&rsquo;s Podcast</div>' +
+              '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:20px;line-height:1.32;font-weight:600">&ldquo;It makes career decisions that have seemed <span class="brick">risky to other people</span> seem <span class="pine">inevitable to me</span>.&rdquo;</div>' +
+              '<div class="qrbox" style="margin:16px auto 0">' +
+                '<!--QR_LENNY-->' +
+                '<div class="cap" style="text-align:center">Scan for the episode</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>',
+    notes: "Credit it properly and early &mdash; you didn't invent this, you heard it on Lenny's podcast with Jason Shah and it named something you'd been doing clumsily for a decade. That honesty plays well with researchers. The ladder is fair, not a straw man: plenty of excellent people build one deliberately, and your own writing says the real skill is serving both at once. <em>Then flip back to the trail slide</em> (press O, or &larr;) and walk them through how you actually chose &mdash; that's the moment the two slides do their work together. The QR is live and points at the episode page with the full transcript."
+  });
+
+  /* ───────────────────────── 5 · LEARNING ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "What makes it work", title: "The learning check", min: 2,
+    html:
+      '<div class="stack sm" style="gap:10px">' +
+        '<div class="lbl">A map only beats a ladder if you&rsquo;re actually learning</div>' +
+        '<div class="row" style="gap:52px;align-items:flex-start">' +
+          '<div style="flex:1.12">' +
+            '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:20px;font-weight:600;line-height:1.28;margin-bottom:12px">Every year or two I ask three questions. Two &ldquo;no&rdquo;s and I start manifesting a change.</div>' +
+            '<div class="stack sm">' +
+              '<div data-step="1" class="qq"><span class="m">01</span><span class="x">Am I still <span class="pine">uncomfortable</span>?</span></div>' +
+              '<div data-step="2" class="qq"><span class="m">02</span><span class="x">Am I learning from the people <span class="pine">immediately around me</span>?</span></div>' +
+              '<div data-step="3" class="qq"><span class="m">03</span><span class="x">Would I two years ago be <span class="pine">surprised</span> by what I can do now?</span></div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="flex:.88">' +
+            '<div data-step="4">' +
+              '<svg class="fig" style="width:86%;margin:0 auto" viewBox="0 0 380 216" aria-label="Two career lines: a high start with a shallow slope, a lower start with a steep one">' +
+                '<line x1="42" y1="182" x2="366" y2="182" stroke="var(--line)"/><line x1="42" y1="14" x2="42" y2="182" stroke="var(--line)"/>' +
+                '<line x1="42" y1="102" x2="352" y2="76" stroke="var(--muted)" stroke-width="2.5"/>' +
+                '<line x1="42" y1="164" x2="352" y2="26" stroke="var(--pine)" stroke-width="2.5"/>' +
+                '<circle cx="42" cy="102" r="4.5" fill="var(--muted)"/><circle cx="42" cy="164" r="4.5" fill="var(--pine)"/>' +
+                '<text x="356" y="72" font-size="10.5" letter-spacing="1.4" fill="var(--muted)" text-anchor="end">STARTING POINT</text>' +
+                '<text x="356" y="22" font-size="10.5" letter-spacing="1.4" fill="var(--pine)" text-anchor="end">RATE OF LEARNING</text>' +
+                '<text x="204" y="206" font-size="10.5" letter-spacing="2" fill="var(--muted)" text-anchor="middle">YEARS</text>' +
+              '</svg>' +
+              '<p style="font-size:16px;margin-top:4px">Over a decade the rate beats the starting point by so much that the starting point stops being visible. Take the salary or the visa when you have to &mdash; then work the rate from inside the job.</p>' +
+            '</div>' +
+            '<div data-step="5" style="margin-top:14px">' +
+              '<div class="note"><div class="h">And the price, honestly</div>' +
+              '<div class="b">Every pivot, you re-establish your reputation from scratch. Great opportunities find you less often, because you&rsquo;re harder to categorise. It can get taxing.</div></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>',
+    notes: "The three questions are the practical core of Act I &mdash; slow down. Stress that &ldquo;manifesting a change&rdquo; usually means a new project, a transfer, a different manager, a side thing &mdash; not a resignation. Question 2 is the one that surprises people: <em>if you're the most interesting person in your own week, that's a warning, not a compliment.</em> The chart is the principle, and the caveat matters in this room &mdash; a lot of them have visa constraints you never had, so give them the &ldquo;take the intercept, then work the slope&rdquo; version with warmth. <b>The price box is from your own writing and it buys you more credibility than anything else on the slide</b> &mdash; don't soften it."
+  });
+
+  /* ───────────────────────── 6 · CLOSE ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "Why it matters now", title: "Why this matters more now", min: 1,
+    html:
+      '<div class="stack">' +
+        '<div class="lbl">Closing Act I</div>' +
+        '<h2 data-step="1" style="max-width:23em">In an AI age, a diverse map stops being a quirk and starts being the qualification.</h2>' +
+        '<div data-step="2" class="row" style="gap:20px">' +
+          '<div class="panel" style="flex:1"><div class="ph">01</div><div style="font-family:\'Fraunces\',Georgia,serif;font-size:21px;font-weight:600;line-height:1.25">Think in abstract terms</div></div>' +
+          '<div class="panel" style="flex:1"><div class="ph">02</div><div style="font-family:\'Fraunces\',Georgia,serif;font-size:21px;font-weight:600;line-height:1.25">Make connections across industries</div></div>' +
+          '<div class="panel" style="flex:1"><div class="ph">03</div><div style="font-family:\'Fraunces\',Georgia,serif;font-size:21px;font-weight:600;line-height:1.25">Supply context beyond the mundane</div></div>' +
+        '</div>' +
+        '<div data-step="3">' +
+          '<hr class="rule" style="margin-bottom:22px">' +
+          '<div class="stmt" style="font-size:34px">A career map isn&rsquo;t just a more interesting life.<br>It&rsquo;s <span class="pine">the training for the one thing</span> that&rsquo;s getting scarcer.</div>' +
+          '<p style="margin-top:18px;font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)">Now &mdash; brass tacks &nbsp;&rarr;</p>' +
+        '</div>' +
+      '</div>',
+    notes: "Your close, your argument: the winners are the people who abstract, connect across domains, and supply context that isn&rsquo;t routine &mdash; and every one of those is what a varied map trains and a single ladder doesn&rsquo;t. Land the last line and pause; it&rsquo;s the pivot of the whole talk. Then the segue into Act II: enough about me, here&rsquo;s what this actually looks like inside a real business right now. <em>This is where Act II picks up &mdash; still to be built.</em>"
+  });
+
+  /* ───────────────────────── engine ───────────────────────── */
+  var stage = document.getElementById("stage");
+  var slideEl = document.getElementById("slide");
+  var eyebrowEl = document.getElementById("eyebrow");
+  var idxEl = document.getElementById("idx");
+  var dotsEl = document.getElementById("dots");
+  var notesEl = document.getElementById("notes");
+  var nhEl = document.getElementById("nh");
+  var nbEl = document.getElementById("nb");
+  var gridEl = document.getElementById("grid");
+  var gridWrap = document.getElementById("gridwrap");
+  var clockEl = document.getElementById("clock");
+
+  var i = 0, step = 0, maxStep = 0;
+
+  function fit() {
+    stage.style.transform = "scale(" + Math.min(window.innerWidth / 1280, window.innerHeight / 720) + ")";
+  }
+
+  function paintSteps() {
+    var els = slideEl.querySelectorAll("[data-step]");
+    for (var k = 0; k < els.length; k++) {
+      var s = parseInt(els[k].getAttribute("data-step"), 10);
+      if (s <= step) els[k].classList.add("shown");
+      else els[k].classList.remove("shown");
+    }
+    dotsEl.innerHTML = "";
+    if (maxStep > 0) {
+      for (var d = 1; d <= maxStep; d++) {
+        var b = document.createElement("i");
+        if (d <= step) b.className = "on";
+        dotsEl.appendChild(b);
+      }
+    }
+  }
+
+  function render(startAtEnd) {
+    var d = S[i];
+    slideEl.innerHTML = d.html;
+    var els = slideEl.querySelectorAll("[data-step]");
+    maxStep = 0;
+    for (var k = 0; k < els.length; k++) {
+      maxStep = Math.max(maxStep, parseInt(els[k].getAttribute("data-step"), 10));
+    }
+    step = startAtEnd ? maxStep : 0;
+    eyebrowEl.innerHTML = "<b>" + d.act + "</b> &nbsp;·&nbsp; " + d.wp;
+    idxEl.innerHTML = (i + 1) + " <i>/</i> " + S.length;
+    nhEl.innerHTML = "Speaker notes &nbsp;·&nbsp; " + d.title + " &nbsp;·&nbsp; approx " + d.min + " min";
+    nbEl.innerHTML = d.notes || "";
+    var cur = gridWrap.querySelector(".thumb.cur");
+    if (cur) cur.classList.remove("cur");
+    var t = gridWrap.children[i];
+    if (t) t.classList.add("cur");
+    paintSteps();
+  }
+
+  function next() {
+    if (step < maxStep) { step++; paintSteps(); }
+    else if (i < S.length - 1) { i++; render(false); }
+  }
+  function prev() {
+    if (step > 0) { step--; paintSteps(); }
+    else if (i > 0) { i--; render(true); }
+  }
+  function goSlide(n) { i = Math.max(0, Math.min(S.length - 1, n)); render(false); }
+
+  function budget() {
+    var t = 0;
+    S.forEach(function (d) { t += d.min; });
+    document.getElementById("gh").innerHTML =
+      "Act I — click to jump · Esc to close &nbsp;&nbsp;|&nbsp;&nbsp; <b style=\"color:var(--pine)\">" +
+      t + " min</b> of the 25-minute talk &nbsp;·&nbsp; " + (25 - t) + " min left for Acts II\u2013IV";
+  }
+
+  function buildGrid() {
+    var frag = document.createDocumentFragment();
+    S.forEach(function (d, n) {
+      var b = document.createElement("button");
+      b.className = "thumb";
+      b.type = "button";
+      b.innerHTML = '<div class="tn">' + String(n + 1).padStart(2, "0") + " · " + d.act +
+        '</div><div class="tt">' + d.title + '</div><div class="tm">~' + d.min + " MIN</div>";
+      b.addEventListener("click", function () { goSlide(n); gridEl.classList.remove("on"); });
+      frag.appendChild(b);
+    });
+    gridWrap.appendChild(frag);
+  }
+
+  var t0 = null, elapsed = 0, tick = null;
+  function paintClock() {
+    var s = Math.floor((elapsed + (t0 ? Date.now() - t0 : 0)) / 1000);
+    clockEl.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+  }
+  function toggleTimer() {
+    if (t0) { elapsed += Date.now() - t0; t0 = null; clearInterval(tick); tick = null; clockEl.classList.remove("run"); }
+    else { t0 = Date.now(); tick = setInterval(paintClock, 500); clockEl.classList.add("run"); }
+    paintClock();
+  }
+  function fullscreen() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  }
+
+  document.getElementById("btimer").addEventListener("click", toggleTimer);
+  document.getElementById("bnotes").addEventListener("click", function () { notesEl.classList.toggle("on"); });
+  document.getElementById("bgrid").addEventListener("click", function () { gridEl.classList.toggle("on"); });
+
+  document.addEventListener("keydown", function (e) {
+    var k = e.key;
+    if (k === "ArrowRight" || k === "PageDown" || k === " " || k === "Enter") { next(); e.preventDefault(); }
+    else if (k === "ArrowLeft" || k === "PageUp") { prev(); e.preventDefault(); }
+    else if (k === "ArrowDown") { if (i < S.length - 1) { i++; render(false); } e.preventDefault(); }
+    else if (k === "ArrowUp") { if (i > 0) { i--; render(false); } e.preventDefault(); }
+    else if (k === "Home") { goSlide(0); }
+    else if (k === "End") { goSlide(S.length - 1); }
+    else if (k === "Escape") { gridEl.classList.remove("on"); }
+    else if (k === "o" || k === "O") { gridEl.classList.toggle("on"); }
+    else if (k === "n" || k === "N") { notesEl.classList.toggle("on"); }
+    else if (k === "t" || k === "T") { toggleTimer(); }
+    else if (k === "f" || k === "F") { fullscreen(); }
+  });
+
+  stage.addEventListener("click", function (e) {
+    if (e.clientX < window.innerWidth * 0.25) prev(); else next();
+  });
+
+  window.addEventListener("resize", fit);
+  buildGrid();
+  budget();
+  fit();
+  render(false);
+  paintClock();
+})();
+</script>
