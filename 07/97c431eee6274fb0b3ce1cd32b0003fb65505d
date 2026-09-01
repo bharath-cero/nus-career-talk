@@ -1,0 +1,25 @@
+dist/NUS_Act1.html
+  s_d6f5d080493362::t_cb69f476412220 303,307-308,390
+src/act1.html
+  s_d6f5d080493362::t_e3b2d1b655bc26 297,301-302,384
+dist/act1-body.html
+  s_d6f5d080493362::t_cb69f476412220 297,301-302,384
+HANDOFF.md
+  s_d6f5d080493362::t_c5c1c10dfdf4f4 73-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0797c431eee6274fb0b3ce1cd32b0003fb65505d",
+  "prompts": {},
+  "sessions": {
+    "s_d6f5d080493362": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05d9d-f89e-73b0-a4b3-76f4398565d5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Bharath Krishnamachari <222831533+bharath-cero@users.noreply.github.com>"
+    }
+  }
+}
