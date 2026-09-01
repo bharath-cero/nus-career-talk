@@ -1,0 +1,48 @@
+assets/logos/ea.svg
+  s_d6f5d080493362::t_8227a953b49208 1-155
+assets/logos/delivery-hero.svg
+  s_d6f5d080493362::t_5a6cb2345484dc 1-16
+dist/NUS_Act1.html
+  s_d6f5d080493362::t_14b5ff03c347e5 196-197,199
+  s_d6f5d080493362::t_856fe50de94e91 248,255,298,306-308,317,336-337,348,358-359,369,374-381,385,421
+assets/logos/ubs.svg
+  s_d6f5d080493362::t_926ecec41fb1b4 1-6
+assets/logos/groupon.svg
+  s_d6f5d080493362::t_9e71361da8f879 1-47
+assets/logos/deloitte.svg
+  s_d6f5d080493362::t_be6da5fce1acb8 1-18
+src/act1.html
+  s_d6f5d080493362::t_0b4e3f6bde58aa 191-192,194
+  s_d6f5d080493362::t_3fe546e3e51868 241,248,291,299-301,310,329-330,341,351-352,362,367-374,378,414
+README.md
+  s_d6f5d080493362::t_a6dbe0355686e7 44
+  s_d6f5d080493362::t_388905829b50ac 35-36
+assets/logos/nus.svg
+  s_d6f5d080493362::t_47b29abdeb5991 1
+src/build.py
+  s_d6f5d080493362::t_5b8089f6c04c68 15,37-49,59-69
+  s_d6f5d080493362::t_cb9004b3dff846 70
+docs/content-sources.md
+  s_d6f5d080493362::t_a6dbe0355686e7 178-190
+dist/act1-body.html
+  s_d6f5d080493362::t_14b5ff03c347e5 191-192,194
+  s_d6f5d080493362::t_74d4401cde6e92 241,248,291,299-301,310,329-330,341,351-352,362,367-374,378,414
+assets/logos/glu-mobile.svg
+  s_d6f5d080493362::t_dfc20e4521baa1 1-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "12313f44071085c4383c138f52c8b9bdace98b98",
+  "prompts": {},
+  "sessions": {
+    "s_d6f5d080493362": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05d9d-f89e-73b0-a4b3-76f4398565d5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Bharath Krishnamachari <222831533+bharath-cero@users.noreply.github.com>"
+    }
+  }
+}
