@@ -5,9 +5,10 @@ Build the NUS talk deck.
 Takes the source deck in src/, injects real scannable QR codes in place of
 `<!--QR_*-->` tokens, and writes two outputs:
 
-  dist/NUS_Act1.html   standalone file — open in a browser and present from it
-  dist/act1-body.html  same content minus <!doctype>/<html>/<head>/<body>,
-                       which is the form the Claude Artifact tool publishes
+  index.html            standalone file served by GitHub Pages
+  dist/NUS_Act1.html    same standalone file for local presenting
+  dist/act1-body.html   same content minus <!doctype>/<html>/<head>/<body>,
+                        which is the form the Claude Artifact tool publishes
 
 Usage:  python3 src/build.py
 """
@@ -34,16 +35,17 @@ QR_TARGETS = {
     # "QR_SLIDO": "https://app.sli.do/event/XXXXXXXX",   # <- add when available
 }
 
-# Official brand marks are vendored so the built deck stays fully self-contained
-# and works without venue wifi. The source URLs and provenance live in
+# Vendored assets are embedded so the built deck stays fully self-contained and
+# works without venue wifi. The source URLs and provenance live in
 # docs/content-sources.md.
-LOGO_ASSETS = {
-    "../assets/logos/ubs.svg": "ubs.svg",
-    "../assets/logos/groupon.svg": "groupon.svg",
-    "../assets/logos/glu-mobile.svg": "glu-mobile.svg",
-    "../assets/logos/ea.svg": "ea.svg",
-    "../assets/logos/deloitte.svg": "deloitte.svg",
-    "../assets/logos/delivery-hero.svg": "delivery-hero.svg",
+EMBED_ASSETS = {
+    "../assets/logos/ubs.svg": "assets/logos/ubs.svg",
+    "../assets/logos/groupon.svg": "assets/logos/groupon.svg",
+    "../assets/logos/glu-mobile.svg": "assets/logos/glu-mobile.svg",
+    "../assets/logos/ea.svg": "assets/logos/ea.svg",
+    "../assets/logos/deloitte.svg": "assets/logos/deloitte.svg",
+    "../assets/logos/delivery-hero.svg": "assets/logos/delivery-hero.svg",
+    "../assets/QR Code for NUS FoS Career Talk.png": "assets/QR Code for NUS FoS Career Talk.png",
 }
 
 FG = "#1F1915"   # --ink
@@ -55,15 +57,15 @@ def build():
     with open(src_path, encoding="utf-8") as f:
         src = f.read()
 
-    logo_dir = os.path.join(ROOT, "assets", "logos")
-    for source_ref, filename in LOGO_ASSETS.items():
+    for source_ref, filename in EMBED_ASSETS.items():
         if source_ref not in src:
-            print("  ! logo reference %s is not used in the source — skipped" % source_ref)
+            print("  ! asset reference %s is not used in the source — skipped" % source_ref)
             continue
-        asset_path = os.path.join(logo_dir, filename)
+        asset_path = os.path.join(ROOT, filename)
         with open(asset_path, "rb") as f:
             encoded = base64.b64encode(f.read()).decode("ascii")
-        src = src.replace(source_ref, "data:image/svg+xml;base64," + encoded)
+        mime = "image/png" if filename.lower().endswith(".png") else "image/svg+xml"
+        src = src.replace(source_ref, "data:%s;base64," % mime + encoded)
         print("  embedded %s" % os.path.relpath(asset_path, ROOT))
 
     for token, url in QR_TARGETS.items():
@@ -97,8 +99,13 @@ def build():
     with open(standalone_path, "w", encoding="utf-8") as f:
         f.write(standalone)
 
+    pages_path = os.path.join(ROOT, "index.html")
+    with open(pages_path, "w", encoding="utf-8") as f:
+        f.write(standalone)
+
     print("  wrote %s (%d bytes)" % (os.path.relpath(body_path, ROOT), len(src)))
     print("  wrote %s (%d bytes)" % (os.path.relpath(standalone_path, ROOT), len(standalone)))
+    print("  wrote %s (%d bytes)" % (os.path.relpath(pages_path, ROOT), len(standalone)))
 
 
 if __name__ == "__main__":

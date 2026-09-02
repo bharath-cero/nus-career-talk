@@ -221,7 +221,7 @@
 <div id="notes"><div class="nh" id="nh"></div><div class="nb" id="nb"></div></div>
 
 <div id="grid">
-  <div class="gh" id="gh">Act I — click to jump · Esc to close</div>
+  <div class="gh" id="gh">Deck map — click to jump · Esc to close</div>
   <div id="gridwrap"></div>
 </div>
 
@@ -265,16 +265,45 @@ S.push({
           '<p class="lead">Type it in. I&rsquo;ll shape what I say around your answers &mdash; and I&rsquo;ll come back to them at the end.</p>' +
         '</div>' +
         '<div style="flex:0 0 auto">' +
-          '<div class="qrph">Paste<br>Slido QR<br>here</div>' +
-          '<div class="cap" style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);margin-top:12px;text-align:center">slido.com &nbsp;/&nbsp; # code</div>' +
+          '<img src="../assets/QR Code for NUS FoS Career Talk.png" alt="Scan to respond in Slido" style="width:210px;height:210px;display:block;padding:10px;background:#fff;border:1px solid var(--line);border-radius:6px">' +
+          '<div class="cap" style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);margin-top:12px;text-align:center">scan to respond</div>' +
         '</div>' +
       '</div>' +
       '<hr class="rule" style="margin-top:38px">' +
       '<p style="margin-top:16px;font-size:17px">Bharath Krishnamachari &nbsp;·&nbsp; Data &amp; AI, Delivery Hero &mdash; foodpanda, foodora, Yemeksepeti &nbsp;·&nbsp; <span class="pine">NUS Computer Engineering, Class of 2008</span></p>',
-    notes: "Open on them, not you. One line of who you are at the bottom is enough &mdash; resist expanding it. Set the contract: I&rsquo;ll talk for about 25 minutes, then the last 15 are yours. <em>Open text, not a word cloud</em> &mdash; you want sentences you can quote back. Let it fill for 60&ndash;90 seconds, read two or three out loud, then move. Keep the tab open; you&rsquo;ll return to these in Q&amp;A."
+    notes: "Open on them, not you. One line of who you are at the bottom is enough &mdash; resist expanding it. Set the contract: I&rsquo;ll talk for about 25 minutes, then the last 15 are yours. <em>Open text, not a word cloud</em> &mdash; you want sentences you can quote back. Let it fill for 60&ndash;90 seconds, read two or three out loud, then move. Keep the tab open; you&rsquo;ll return to these in Q&amp;A.<br><br><span class=\"src\">[Sources] Slido QR: speaker-provided asset.</span>"
   });
 
-  /* ───────────────────────── 3 · THE TRAIL ───────────────────────── */
+  /* ───────────────────────── 3 · AGENDA ───────────────────────── */
+  S.push({
+    act: "NUS · Faculty of Science", wp: "Today&rsquo;s map", title: "Agenda", min: 1,
+    html:
+      '<div class="stack" style="gap:24px">' +
+        '<div class="lbl">Today&rsquo;s map</div>' +
+        '<h2 style="font-size:46px">Three parts. Then the floor is yours.</h2>' +
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px">' +
+          '<div style="border-top:4px solid var(--pine);padding-top:18px">' +
+            '<div class="lbl">Act I</div>' +
+            '<div class="stmt" style="font-size:30px;margin-top:14px">A career map</div>' +
+            '<p style="font-size:18px;line-height:1.5;margin-top:12px">The pivots that shaped mine &mdash; and how to choose work that keeps you learning.</p>' +
+          '</div>' +
+          '<div style="border-top:4px solid var(--ochre);padding-top:18px">' +
+            '<div class="lbl" style="color:var(--ochre)">Act II</div>' +
+            '<div class="stmt" style="font-size:30px;margin-top:14px">Data as a craft</div>' +
+            '<p style="font-size:18px;line-height:1.5;margin-top:12px">Food delivery, Analytics Engineering, semantic context and where AI moves the work.</p>' +
+          '</div>' +
+          '<div style="border-top:4px solid var(--brick);padding-top:18px">' +
+            '<div class="lbl" style="color:var(--brick)">Closing + Q&amp;A</div>' +
+            '<div class="stmt" style="font-size:30px;margin-top:14px">Make it visible</div>' +
+            '<p style="font-size:18px;line-height:1.5;margin-top:12px">How to stand out by showing the work &mdash; then the questions you want to unpack.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid var(--line);padding-top:18px" class="stmt">We&rsquo;ll return to your Slido answers along the way.</div>' +
+      '</div>',
+    notes: "Use this to set the route after the opening Slido prompt. Act I is the personal story and the career-choice framework. Act II moves into the current business and the changing data craft. The close makes the advice immediately practical, then turns the remaining time over to the room."
+  });
+
+  /* ───────────────────────── 4 · THE TRAIL ───────────────────────── */
   S.push({
     act: "Act I", wp: "The trail", title: "The trail", min: 4,
     html:
@@ -384,7 +413,7 @@ S.push({
     notes: "<em>Four minutes, one slide, seven presses.</em> The colours are the grammar: ochre is geography, brick is role, green is industry. Start at UBS Singapore in 2008 as a Graduate Trainee. It was an excellent programme built around learning; voice over the two-month London rotation here. <b>Give 2010 room:</b> the bank moved you to the US; it was the first major change in the map, not a job hunt. In 2012 the role changed from technology to corporate strategy. In 2014 both the industry and the work changed: fashion e-commerce, Analytics &amp; Special Projects. Treat Glu as one 2016&ndash;18 chapter: the move to San Francisco plus Big Data and Product Data Science. Then consulting in Southeast Asia, then Delivery Hero across Berlin, Singapore and Istanbul. The point is not that every move went up. The coordinates changed.<br><br><span class=\"src\">[Sources] Brand marks: UBS, Groupon, Glu Mobile, Electronic Arts, Deloitte and Delivery Hero/Wikimedia Commons.</span>"
   });
 
-  /* ───────────────────────── 4 · HUSTLE ───────────────────────── */
+  /* ───────────────────────── 5 · HUSTLE ───────────────────────── */
   S.push({
     act: "Act I", wp: "Takeaway one of two", title: "Initiative creates options", min: 3,
     html:
@@ -420,7 +449,7 @@ S.push({
     notes: "Three stories, one press each, about 40 seconds apiece. The throughline is initiative, not self-promotion. In 01, you saw something useful that did not exist, organised it, and found senior sponsors. In 02, you made the cold ask for a genuine stretch. In 03, voice over the choice: familiar analytics roles at Google and Gojek were on the table, but you chose the unfamiliar, sales-facing Deloitte role and learned the commercial side. <em>Let the examples carry the point.</em>"
   });
 
-  /* ───────────────────────── 5 · MAP VS LADDER ───────────────────────── */
+  /* ───────────────────────── 6 · MAP VS LADDER ───────────────────────── */
   S.push({
     act: "Act I", wp: "Takeaway two of two", title: "Map, not ladder", min: 2.5,
     html:
@@ -482,7 +511,7 @@ S.push({
     notes: "The paradigm is the main event; the quote and QR are attribution, not a third column. A ladder asks a positional question: what is the next rung? A map asks a learning question: where will I learn fastest? Be fair to the ladder &mdash; titles, scope and pay matter. The argument is that a map gives you more than one axis of progress: role, industry and geography. <em>Then flip back to the trail slide</em> and point out which coordinate changed at each move. Credit Jason Shah and Lenny&rsquo;s Podcast; the QR links to the episode transcript."
   });
 
-  /* ───────────────────────── 5 · LEARNING ───────────────────────── */
+  /* ───────────────────────── 7 · LEARNING ───────────────────────── */
   S.push({
     act: "Act I", wp: "What makes it work", title: "The learning check", min: 2,
     html:
@@ -494,33 +523,25 @@ S.push({
             '<div class="stack sm">' +
               '<div data-step="1" class="qq"><span class="m">01</span><span class="x">Am I still <span class="pine">uncomfortable</span>?</span></div>' +
               '<div data-step="2" class="qq"><span class="m">02</span><span class="x">Am I learning from the people <span class="pine">immediately around me</span>?</span></div>' +
-              '<div data-step="3" class="qq"><span class="m">03</span><span class="x">Would I two years ago be <span class="pine">surprised</span> by what I can do now?</span></div>' +
+              '<div data-step="3" class="qq"><span class="m">03</span><span class="x">Am I <span class="pine">inspired</span> to bring my best?</span></div>' +
             '</div>' +
           '</div>' +
-          '<div style="flex:.88">' +
-            '<div data-step="4">' +
-              '<svg class="fig" style="width:86%;margin:0 auto" viewBox="0 0 380 216" aria-label="Two career lines: a high start with a shallow slope, a lower start with a steep one">' +
-                '<line x1="42" y1="182" x2="366" y2="182" stroke="var(--line)"/><line x1="42" y1="14" x2="42" y2="182" stroke="var(--line)"/>' +
-                '<line x1="42" y1="102" x2="352" y2="76" stroke="var(--muted)" stroke-width="2.5"/>' +
-                '<line x1="42" y1="164" x2="352" y2="26" stroke="var(--pine)" stroke-width="2.5"/>' +
-                '<circle cx="42" cy="102" r="4.5" fill="var(--muted)"/><circle cx="42" cy="164" r="4.5" fill="var(--pine)"/>' +
-                '<text x="356" y="72" font-size="10.5" letter-spacing="1.4" fill="var(--muted)" text-anchor="end">STARTING POINT</text>' +
-                '<text x="356" y="22" font-size="10.5" letter-spacing="1.4" fill="var(--pine)" text-anchor="end">RATE OF LEARNING</text>' +
-                '<text x="204" y="206" font-size="10.5" letter-spacing="2" fill="var(--muted)" text-anchor="middle">YEARS</text>' +
-              '</svg>' +
-              '<p style="font-size:16px;margin-top:4px">Over a decade the rate beats the starting point by so much that the starting point stops being visible. Take the salary or the visa when you have to &mdash; then work the rate from inside the job.</p>' +
-            '</div>' +
-            '<div data-step="5" style="margin-top:14px">' +
-              '<div class="note"><div class="h">And the price, honestly</div>' +
-              '<div class="b">Every pivot, you re-establish your reputation from scratch. Great opportunities find you less often, because you&rsquo;re harder to categorise. It can get taxing.</div></div>' +
+          '<div style="flex:1">' +
+            '<div data-step="4" style="background:var(--card);border-left:4px solid var(--brick);padding:24px 28px">' +
+              '<div class="lbl" style="color:var(--brick)">But there is a cost</div>' +
+              '<div class="stmt" style="font-size:30px;line-height:1.16;margin-top:13px">Every pivot resets part of your reputation.</div>' +
+              '<hr class="rule" style="margin:18px 0">' +
+              '<p style="font-size:18px;line-height:1.48;max-width:none">You become harder to categorise, so some opportunities find you less easily.</p>' +
+              '<p style="font-size:18px;line-height:1.48;margin-top:11px;max-width:none">Repeatedly proving yourself in a new context can get taxing.</p>' +
+              '<div style="margin-top:19px;padding-top:15px;border-top:1px solid var(--line);font-family:\'Fraunces\',Georgia,serif;font-size:23px;font-weight:700;color:var(--pine)">Manage that cost actively.</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
       '</div>',
-    notes: "The three questions are the practical core of Act I &mdash; slow down. Stress that &ldquo;manifesting a change&rdquo; usually means a new project, a transfer, a different manager, a side thing &mdash; not a resignation. Question 2 is the one that surprises people: <em>if you're the most interesting person in your own week, that's a warning, not a compliment.</em> The chart is the principle, and the caveat matters in this room &mdash; a lot of them have visa constraints you never had, so give them the &ldquo;take the intercept, then work the slope&rdquo; version with warmth. <b>The price box is from your own writing and it buys you more credibility than anything else on the slide</b> &mdash; don't soften it."
+    notes: "The three questions are the practical core of Act I &mdash; slow down. Stress that &ldquo;manifesting a change&rdquo; usually means a new project, a transfer, a different manager, a side thing &mdash; not a resignation. Question 2 is the one that surprises people: <em>if you're the most interesting person in your own week, that's a warning, not a compliment.</em> After the three questions, pause before revealing the right side: <em>by the way, a learning-based career map can come with a cost that you need to manage actively.</em> Every pivot means re-establishing reputation, a less easily categorised profile can reduce how often obvious opportunities find you, and repeated reinvention can be taxing. Do not soften the trade-off; it makes the framework credible."
   });
 
-  /* ───────────────────────── 6 · CLOSE ───────────────────────── */
+  /* ───────────────────────── 8 · CLOSE ───────────────────────── */
   S.push({
     act: "Act I", wp: "Why it matters now", title: "Why this matters more now", min: 1,
     html:
@@ -532,11 +553,323 @@ S.push({
           '<div class="stmt" style="font-size:32px;line-height:1.22">Frame the right problem.<br>Connect the context.<br>Choose what matters.</div>' +
         '</div>' +
         '<div data-step="3" style="display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px">' +
-          '<div class="stmt" style="font-size:31px">A varied career map is how you <span class="pine">train that judgment.</span></div>' +
+          '<div class="stmt" style="font-size:31px">A varied career map is how you <span class="pine">acquire that judgment.</span></div>' +
           '<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);white-space:nowrap">Now &mdash; brass tacks &nbsp;&rarr;</div>' +
         '</div>' +
       '</div>',
     notes: "The scarce thing is now explicit: judgment. Define it in practical terms &mdash; framing the right problem, connecting context across domains, and deciding what matters enough to act on. AI makes generating answers cheaper; it does not remove the need to choose the question or evaluate the answer. A varied career map trains those muscles because you repeatedly enter unfamiliar contexts and learn what transfers. Land the last line, pause, then move into Act II: what this looks like inside a real business right now."
+  });
+
+  /* ───────────────────────── 9 · AUDIENCE POLL ───────────────────────── */
+  S.push({
+    act: "Act I", wp: "Your turn", title: "Audience poll", min: 2,
+    html:
+      '<div class="row mid" style="gap:54px">' +
+        '<div style="flex:1.55" class="stack">' +
+          '<div class="lbl" style="color:var(--brick)">Your turn &mdash; pick one. It&rsquo;s anonymous.</div>' +
+          '<div style="display:grid;grid-template-columns:42px 1fr;gap:16px;align-items:start">' +
+            '<div class="lbl brick" style="font-size:14px;padding-top:8px">Q1</div>' +
+            '<div><div class="stmt" style="font-size:32px">What would you optimise your first job for?</div>' +
+            '<p style="font-family:\'JetBrains Mono\',monospace;font-size:18px;line-height:1.6;margin-top:10px;max-width:none">Salary &nbsp;&middot;&nbsp; Title &nbsp;&middot;&nbsp; Brand name &nbsp;&middot;&nbsp; Rate of learning &nbsp;&middot;&nbsp; Visa / location</p></div>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:42px 1fr;gap:16px;align-items:start">' +
+            '<div class="lbl brick" style="font-size:14px;padding-top:8px">Q2</div>' +
+            '<div><div class="stmt" style="font-size:32px">Ladder or map &mdash; which are you instinctively drawn to?</div>' +
+            '<p style="font-family:\'JetBrains Mono\',monospace;font-size:18px;line-height:1.6;margin-top:10px;max-width:none">Ladder &nbsp;&middot;&nbsp; Map &nbsp;&middot;&nbsp; Both &nbsp;&middot;&nbsp; Ask me again in five years</p></div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="flex:.62;text-align:center">' +
+          '<img src="../assets/QR Code for NUS FoS Career Talk.png" alt="Scan to join the Slido poll" style="width:260px;height:260px;display:block;margin:0 auto;padding:12px;background:#fff;border:1px solid var(--line);border-radius:6px">' +
+          '<div class="lbl" style="margin-top:14px;color:var(--muted)">scan to vote &nbsp;&middot;&nbsp; poll 2</div>' +
+        '</div>' +
+      '</div>',
+    notes: "Pause and let the room vote. Q1 turns the first-job trade-off into a personal choice; Q2 tests the ladder-versus-map instinct before the talk moves from career choices into the current business context. Keep the poll anonymous and use the responses as the verbal bridge into Act II.<br><br><span class=\"src\">[Sources] Poll wording, layout and Slido QR: speaker-provided assets.</span>"
+  });
+
+  /* ───────────────────────── 10 · CURRENT COORDINATE ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "The current coordinate", title: "Delivery Hero in one slide", min: 1.5,
+    html:
+      '<div class="stack" style="gap:20px">' +
+        '<div class="lbl">The current coordinate</div>' +
+        '<div class="row mid" style="gap:46px">' +
+          '<div style="flex:.76">' +
+            '<img class="brand-logo" src="../assets/logos/delivery-hero.svg" alt="Delivery Hero" style="width:190px;margin-bottom:18px">' +
+            '<h2 style="font-size:50px;line-height:1.06">Three brands.<br>Sixteen markets.<br><span class="pine">One data team.</span></h2>' +
+          '</div>' +
+          '<div style="flex:1.24;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end">' +
+            '<div style="border-top:3px solid var(--ochre);padding-top:18px;min-height:190px">' +
+              '<div class="lbl" style="color:var(--ochre)">Europe</div>' +
+              '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:37px;font-weight:700;margin-top:18px">foodora</div>' +
+              '<p style="font-size:16px;margin-top:12px">A consumer brand across European markets.</p>' +
+            '</div>' +
+            '<div style="border-top:3px solid var(--brick);padding-top:18px;min-height:190px">' +
+              '<div class="lbl" style="color:var(--brick)">Türkiye</div>' +
+              '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:31px;font-weight:700;margin-top:18px">Yemeksepeti</div>' +
+              '<p style="font-size:16px;margin-top:12px">A deeply local marketplace and brand.</p>' +
+            '</div>' +
+            '<div style="border-top:3px solid var(--pine-mid);padding-top:18px;min-height:190px">' +
+              '<div class="lbl" style="color:var(--pine-mid)">Asia Pacific</div>' +
+              '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:34px;font-weight:700;margin-top:18px">foodpanda</div>' +
+              '<p style="font-size:16px;margin-top:12px">A multi-market delivery ecosystem.</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:baseline">' +
+          '<div class="stmt" style="font-size:31px">The product is digital. <span class="pine">The outcome is physical.</span></div>' +
+          '<div class="lbl" style="color:var(--ochre);white-space:nowrap">movement of atoms &nbsp;&rarr;</div>' +
+        '</div>' +
+      '</div>',
+    notes: "A quick reset on the current coordinate in the career map. Keep this to scope, not corporate history: three consumer brands across sixteen markets, brought together under one data team. The regional brand descriptions are deliberately light; personalise them in the talk track. Land the final contrast &mdash; the interface is digital, but the promise is physical &mdash; to open the marketplace slide.<br><br><span class=\"src\">[Sources] Delivery Hero logo: Wikimedia Commons. Market and organisation scope: speaker-provided reference slide.</span>"
+  });
+
+  /* ───────────────────────── 11 · MARKETPLACE ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "Business context", title: "A three-sided marketplace", min: 2,
+    html:
+      '<div class="stack" style="gap:16px">' +
+        '<div class="lbl">Business context</div>' +
+        '<h2 style="font-size:43px">A hot meal. Three parties. Thousands of ways to fail.</h2>' +
+        '<div class="row mid" style="gap:46px">' +
+          '<div style="flex:1.15">' +
+            '<svg class="fig" viewBox="0 0 600 320" aria-label="A three-sided food delivery marketplace connecting restaurants, riders and customers">' +
+              '<path d="M300 48 L105 258 L495 258 Z" fill="none" stroke="var(--line)" stroke-width="3"/>' +
+              '<g>' +
+                '<circle cx="300" cy="48" r="43" fill="var(--card)" stroke="var(--ochre)" stroke-width="4"/>' +
+                '<text class="serifsvg" x="300" y="44" font-size="18" font-weight="700" fill="var(--ink)" text-anchor="middle">Riders</text>' +
+                '<text x="300" y="65" font-size="10.5" fill="var(--muted)" text-anchor="middle">MOVE</text>' +
+              '</g>' +
+              '<g>' +
+                '<circle cx="105" cy="258" r="43" fill="var(--card)" stroke="var(--brick)" stroke-width="4"/>' +
+                '<text class="serifsvg" x="105" y="254" font-size="17" font-weight="700" fill="var(--ink)" text-anchor="middle">Restaurants</text>' +
+                '<text x="105" y="275" font-size="10.5" fill="var(--muted)" text-anchor="middle">PREPARE</text>' +
+              '</g>' +
+              '<g>' +
+                '<circle cx="495" cy="258" r="43" fill="var(--card)" stroke="var(--pine-mid)" stroke-width="4"/>' +
+                '<text class="serifsvg" x="495" y="254" font-size="18" font-weight="700" fill="var(--ink)" text-anchor="middle">Customers</text>' +
+                '<text x="495" y="275" font-size="10.5" fill="var(--muted)" text-anchor="middle">EXPECT</text>' +
+              '</g>' +
+              '<g>' +
+                '<circle cx="300" cy="191" r="60" fill="var(--pine)"/>' +
+                '<text class="serifsvg" x="300" y="181" font-size="18" font-weight="700" fill="var(--paper)" text-anchor="middle">Marketplace</text>' +
+                '<text x="300" y="203" font-size="10.5" fill="var(--mint)" text-anchor="middle">ABSORBS THE</text>' +
+                '<text x="300" y="216" font-size="10.5" fill="var(--mint)" text-anchor="middle">VARIANCE</text>' +
+                '<path d="M34 191 H224" stroke="var(--ochre)" stroke-width="3"/>' +
+                '<path d="M376 191 H566" stroke="var(--brick)" stroke-width="3"/>' +
+                '<text x="36" y="177" font-size="11" fill="var(--ochre)">GROWTH</text>' +
+                '<text x="564" y="177" font-size="11" fill="var(--brick)" text-anchor="end">PROFITABILITY</text>' +
+              '</g>' +
+            '</svg>' +
+          '</div>' +
+          '<div style="flex:.85" class="stack sm">' +
+            '<div style="border-left:3px solid var(--ochre);padding-left:18px">' +
+              '<div class="stmt" style="font-size:25px">Thin margins.</div>' +
+              '<p style="font-size:17px;margin-top:5px">The platform carries the cost when the physical system breaks.</p>' +
+            '</div>' +
+            '<div style="border-left:3px solid var(--brick);padding-left:18px">' +
+              '<div class="stmt" style="font-size:25px">Human failure points.</div>' +
+              '<p style="font-size:17px;margin-top:5px">Busy kitchens, delayed riders, weather, packing mistakes and spills.</p>' +
+            '</div>' +
+            '<div style="border-left:3px solid var(--pine);padding-left:18px">' +
+              '<div class="stmt" style="font-size:25px">Constant trade-offs.</div>' +
+              '<p style="font-size:17px;margin-top:5px">Growth, experience and profitability must improve together.</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid var(--line);padding-top:14px;font-family:\'Fraunces\',Georgia,serif;font-size:23px;font-weight:700">Data and experimentation are how the system learns. <span class="pine">AI increases the speed &mdash; and the stakes.</span></div>' +
+      '</div>',
+    notes: "Use the existing talk track here: food delivery is the difficult task of reliably moving a hot meal from restaurant, through rider, to customer at massive scale. Every edge of the triangle contains human uncertainty, and the marketplace absorbs the cost on top of thin margins. Explain why data matters: the trade-offs are continuous, connected and too large for intuition alone. Introduce AI as an accelerant, not a separate enterprise thesis.<br><br><span class=\"src\">[Sources] Marketplace framing: speaker-provided reference slide. Failure examples and movement-of-atoms framing: Bharath Krishnamachari LinkedIn post, &ldquo;Movement of atoms.&rdquo;</span>"
+  });
+
+  /* ───────────────────────── 12 · DATA ORG ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "How the data org is designed", title: "Analytics Engineering", min: 2.5,
+    html:
+      '<div class="stack" style="gap:14px">' +
+        '<div class="lbl">How the data org is designed</div>' +
+        '<h2 style="font-size:40px">Analytics Engineering has the highest leverage in our org design.</h2>' +
+        '<div class="row" style="gap:34px;align-items:stretch">' +
+          '<div style="flex:1.22" class="stack sm">' +
+            '<div data-step="1" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">' +
+              '<div class="panel" style="padding:13px 8px;text-align:center"><div class="ph">Product</div><div style="font-size:16px;font-weight:600">Analytics</div></div>' +
+              '<div class="panel" style="padding:13px 8px;text-align:center"><div class="ph">Marketing</div><div style="font-size:16px;font-weight:600">Analytics</div></div>' +
+              '<div class="panel" style="padding:13px 8px;text-align:center"><div class="ph">Commercial</div><div style="font-size:16px;font-weight:600">Analytics</div></div>' +
+              '<div class="panel" style="padding:13px 8px;text-align:center"><div class="ph">Operations</div><div style="font-size:16px;font-weight:600">Analytics</div></div>' +
+              '<div class="panel" style="padding:13px 8px;text-align:center"><div class="ph">Groceries</div><div style="font-size:16px;font-weight:600">Analytics</div></div>' +
+            '</div>' +
+            '<div data-step="3" style="background:var(--mint);border:2px solid var(--pine);padding:18px 24px">' +
+              '<div><div class="stmt" style="font-size:24px">Analytics Engineers</div><p style="font-size:16px;margin-top:4px">Data marts · governed metrics · semantic layers · observability</p></div>' +
+            '</div>' +
+            '<div data-step="2" class="panel" style="padding:18px 24px">' +
+              '<div class="row mid" style="gap:20px"><div class="lbl">Foundation</div><div><div class="stmt" style="font-size:24px">Data Engineers</div><p style="font-size:16px;margin-top:2px">Ingestion · quality · infrastructure · cloud cost</p></div></div>' +
+            '</div>' +
+          '</div>' +
+          '<div data-step="4" style="flex:.78;border-left:1px solid var(--line);padding-left:28px">' +
+            '<div class="lbl">The mission</div>' +
+            '<div class="stmt" style="font-size:27px;margin-top:12px">Turn raw data into trusted meaning the business can reuse.</div>' +
+            '<hr class="rule" style="margin:20px 0">' +
+            '<div class="stack sm" style="gap:13px">' +
+              '<div><div class="lbl">01 · Model</div><p style="font-size:16px;margin-top:3px">Business-aligned data models.</p></div>' +
+              '<div><div class="lbl">02 · Define</div><p style="font-size:16px;margin-top:3px">Consistent, reusable metrics.</p></div>' +
+              '<div><div class="lbl">03 · Trust</div><p style="font-size:16px;margin-top:3px">Contracts, quality and observability.</p></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>',
+    notes: "Spend time here. Begin with embedded functional analytics and the data-engineering foundation, then reveal Analytics Engineering as the connective tissue. Explain why it has a dedicated career framework and why the leverage is high: the same governed models and metrics support every analyst, dashboard and agent. Distinguish the craft from both data engineering and conventional analysis. Use your own examples of what an Analytics Engineer owns day to day.<br><br><span class=\"src\">[Sources] Organisation design and Analytics Engineering remit: speaker-provided reference slide and Bharath Krishnamachari CDAO Data Leadership Summit post.</span>"
+  });
+
+  /* ───────────────────────── 13 · SEMANTIC LAYER ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "Grounding the stack", title: "The semantic layer", min: 2.5,
+    html:
+      '<div class="stack" style="gap:13px">' +
+        '<div class="lbl">Grounding the stack</div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:baseline">' +
+          '<h2 style="font-size:42px">The semantic layer is the shared language.</h2>' +
+          '<div class="lbl" style="color:var(--ochre)">one reality · many interfaces</div>' +
+        '</div>' +
+        '<div style="width:86%;margin:0 auto" class="stack sm">' +
+          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">' +
+            '<div class="panel" style="text-align:center;padding:15px"><div class="stmt" style="font-size:23px">Dashboards</div><div class="lbl" style="margin-top:6px">see</div></div>' +
+            '<div class="panel" style="text-align:center;padding:15px"><div class="stmt" style="font-size:23px">Analysts</div><div class="lbl" style="margin-top:6px">interpret</div></div>' +
+            '<div class="panel" style="text-align:center;padding:15px"><div class="stmt" style="font-size:23px">Agents</div><div class="lbl" style="margin-top:6px">act</div></div>' +
+          '</div>' +
+          '<div style="background:var(--pine);color:var(--paper);padding:18px 28px;text-align:center;border-radius:6px">' +
+            '<div class="lbl" style="color:var(--mint)">Grounding layer</div>' +
+            '<div class="stmt" style="font-size:28px;margin-top:5px;color:var(--paper)">Semantic layer + context graph</div>' +
+          '</div>' +
+          '<div style="background:var(--secondary);border:1px solid var(--line);padding:15px 28px;text-align:center;border-radius:6px">' +
+            '<div class="stmt" style="font-size:24px">Cross-functional data mart</div>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">' +
+            '<div style="border-top:3px solid var(--ochre);padding-top:9px;text-align:center"><div class="lbl">Orders</div><p style="font-size:15px;margin:3px auto 0">events</p></div>' +
+            '<div style="border-top:3px solid var(--brick);padding-top:9px;text-align:center"><div class="lbl">Customers</div><p style="font-size:15px;margin:3px auto 0">behaviour</p></div>' +
+            '<div style="border-top:3px solid var(--pine-mid);padding-top:9px;text-align:center"><div class="lbl">Logistics</div><p style="font-size:15px;margin:3px auto 0">operations</p></div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="font-family:\'Fraunces\',Georgia,serif;font-size:22px;font-weight:700;text-align:center">Not text-to-SQL. <span class="pine">Shared meaning for humans and AI.</span></div>' +
+      '</div>',
+    notes: "Build this from the bottom. Raw sources become a cross-functional data mart; Analytics Engineers add governed definitions and business context; dashboards, analysts and agents all consume the same meaning. Explain why this matters for agentic analytics: fluent SQL against ambiguous definitions only produces confident inconsistency. The semantic and context layers make the ecosystem agent-friendly. Use one deceptively complicated metric definition if you have a safe example.<br><br><span class=\"src\">[Sources] Stack design: speaker-provided reference slide and Bharath Krishnamachari CDAO Data Leadership Summit post.</span>"
+  });
+
+  /* ───────────────────────── 14 · ANALYSIS VS RIGOUR ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "The new bottleneck", title: "Analysis scales faster than rigour", min: 2,
+    html:
+      '<div class="stack" style="gap:28px">' +
+        '<div class="lbl">The new bottleneck</div>' +
+        '<div>' +
+          '<h2 style="font-size:48px;line-height:1.08;max-width:22em">Easy access to analysis doesn&rsquo;t guarantee better decisions.</h2>' +
+          '<div class="stmt brick" style="font-size:41px;line-height:1.12;margin-top:18px">More charts. More interpretations.<br>More confidently wrong narratives.</div>' +
+        '</div>' +
+        '<div class="row" style="gap:52px;border-top:1px solid var(--line);padding-top:24px">' +
+          '<div style="flex:1">' +
+            '<div class="lbl" style="color:var(--ochre)">What becomes cheap</div>' +
+            '<div class="stmt" style="font-size:27px;margin-top:10px">Code, queries and first-pass analysis.</div>' +
+            '<p style="font-size:16px;margin-top:8px">Python, SQL and copilots become available to almost everyone.</p>' +
+          '</div>' +
+          '<div style="flex:1">' +
+            '<div class="lbl" style="color:var(--pine)">What becomes valuable</div>' +
+            '<div class="stmt" style="font-size:27px;margin-top:10px">Rigour, context and judgment.</div>' +
+            '<p style="font-size:16px;margin-top:8px">The work moves from producing an answer to making the right decision.</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>',
+    notes: "The falling barrier to analysis is good: low-leverage service work no longer needs to queue behind analysts, and more people will write Python or SQL with assistance. But analysis scales faster than rigour. More output can create more confidently wrong narratives unless the company shares definitions and context. This is the setup for where analysts need to move next.<br><br><span class=\"src\">[Sources] Timothy Wong quote and commentary: Bharath Krishnamachari LinkedIn post, &ldquo;Future of analytics with AI.&rdquo;</span>"
+  });
+
+  /* ───────────────────────── 15 · THREE DATA CRAFTS ───────────────────────── */
+  S.push({
+    act: "Act II", wp: "Where the craft is heading", title: "Three emerging data careers", min: 2.5,
+    html:
+      '<div class="stack" style="gap:20px">' +
+        '<div class="lbl">Where the craft is heading</div>' +
+        '<h2 style="font-size:42px">Three ways I see the data role evolving.</h2>' +
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">' +
+          '<div data-step="1" style="border-top:4px solid var(--pine);padding-top:18px">' +
+            '<div class="lbl">01 · Core function now</div>' +
+            '<div class="stmt" style="font-size:28px;margin-top:14px">Analytics<br>Engineering</div>' +
+            '<p style="font-size:17px;line-height:1.45;margin-top:14px">Semantic layers.<br>Governed metrics.<br>Context graphs.<br>Evals and golden datasets.</p>' +
+          '</div>' +
+          '<div data-step="2" style="border-top:4px solid var(--ochre);padding-top:18px">' +
+            '<div class="lbl">02 · Higher bar</div>' +
+            '<div class="stmt" style="font-size:28px;margin-top:14px">Data Product<br>Management</div>' +
+            '<p style="font-size:17px;line-height:1.45;margin-top:14px">Canonical views.<br>Built for real users.<br>Fast and intuitive.<br>Measure whether it lands.</p>' +
+          '</div>' +
+          '<div data-step="3" style="border-top:4px solid var(--brick);padding-top:18px">' +
+            '<div class="lbl">03 · The differentiator</div>' +
+            '<div class="stmt" style="font-size:28px;margin-top:14px">Storytelling<br>+ Influence</div>' +
+            '<p style="font-size:17px;line-height:1.45;margin-top:14px">Problem framing.<br>Sound judgment.<br>Consultative engagement.<br>Communication that moves.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div data-step="4" style="border-top:1px solid var(--line);padding-top:18px" class="stmt">Only one of these is primarily about tools.</div>' +
+      '</div>',
+    notes: "Close Act II by making the career implications explicit for the data master&rsquo;s students. Analytics Engineering owns the infrastructure of trusted meaning. Data Product Management treats canonical views and analytical products as products, including adoption. Storytelling and influence were always part of good analysis; now they become the differentiator. The bar rises as production becomes cheaper. Pause on the final line and let them decide which door interests them.<br><br><span class=\"src\">[Sources] Three craft directions: Bharath Krishnamachari LinkedIn post, &ldquo;Future of analytics with AI.&rdquo; Analytics Intelligence Engineering terminology credited in the source post to Hamzah Chaudhary.</span>"
+  });
+
+  /* ───────────────────────── 16 · THREE TAKEAWAYS ───────────────────────── */
+  S.push({
+    act: "Closing", wp: "Bring it home", title: "If you forget everything else", min: 1.5,
+    html:
+      '<div class="stack" style="gap:18px">' +
+        '<div class="lbl" style="color:var(--brick)">If you forget everything else</div>' +
+        '<h2 style="font-size:43px">Three things worth taking with you.</h2>' +
+        '<div style="display:grid;grid-template-columns:72px 1fr;column-gap:22px;border-top:3px solid var(--pine);padding-top:14px">' +
+          '<div class="huge" style="font-size:50px;line-height:1;color:var(--pine)">01</div>' +
+          '<div><div class="stmt" style="font-size:28px">Map and ladder, both.</div><p style="font-size:17px;margin-top:4px;max-width:none">Use the map to find energy and learning. Use the ladder to compound what matters.</p></div>' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:72px 1fr;column-gap:22px;border-top:1px solid var(--line);padding-top:14px">' +
+          '<div class="huge" style="font-size:50px;line-height:1;color:var(--ochre)">02</div>' +
+          '<div><div class="stmt" style="font-size:28px">Protect the learning curve.</div><p style="font-size:17px;margin-top:4px;max-width:none">Check for the plateau. Choose a stretch before comfort chooses for you.</p></div>' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:72px 1fr;column-gap:22px;border-top:1px solid var(--line);padding-top:14px">' +
+          '<div class="huge" style="font-size:50px;line-height:1;color:var(--brick)">03</div>' +
+          '<div><div class="stmt" style="font-size:28px">Build &mdash; and show &mdash; the proof.</div><p style="font-size:17px;margin-top:4px;max-width:none">Claims are abundant. Judgment, craft and visible evidence are not.</p></div>' +
+        '</div>' +
+      '</div>',
+    notes: "Bring the two acts together. A career map creates range; a ladder compounds depth. The recurring test is whether the learning curve is still alive. Then pivot from career strategy to the immediate job market: students do not have to rely on claims alone when they can make their ability visible.<br><br><span class=\"src\">[Sources] Closing structure and phrasing inspired by the speaker-provided reference slide.</span>"
+  });
+
+  /* ───────────────────────── 17 · SHOW THE WORK ───────────────────────── */
+  S.push({
+    act: "Closing", wp: "Stand out", title: "Show the work", min: 2,
+    html:
+      '<div class="stack" style="gap:24px">' +
+        '<div class="lbl">Stand out in a crowded job market</div>' +
+        '<h2 style="font-size:57px;line-height:1.04;max-width:18em">A CV asserts.<br>A thing you made <span class="brick">demonstrates.</span></h2>' +
+        '<div style="border-left:4px solid var(--ochre);padding-left:24px">' +
+          '<div class="stmt" style="font-size:29px">This is the Faculty of Science. It is a good time to be a builder.</div>' +
+          '<p style="font-size:19px;margin-top:7px;max-width:none">Build something useful. Show how it works. Make your ability inspectable.</p>' +
+        '</div>' +
+        '<div class="row" style="gap:38px;border-top:1px solid var(--line);padding-top:18px">' +
+          '<div style="flex:.9"><div class="lbl">The baseline</div><div class="stmt" style="font-size:24px;margin-top:7px">A good LinkedIn profile.</div></div>' +
+          '<div style="flex:1.1"><div class="lbl" style="color:var(--pine-mid)">Even better</div><div class="stmt" style="font-size:24px;margin-top:7px">A personal website with evidence.</div></div>' +
+          '<div style="flex:1.3"><div class="lbl" style="color:var(--brick)">What to include</div><p style="font-size:17px;margin-top:7px;max-width:none">Describe the work &nbsp;&middot;&nbsp; Link it &nbsp;&middot;&nbsp; Explain your choices</p></div>' +
+        '</div>' +
+      '</div>',
+    notes: "Make this practical. A polished LinkedIn profile is now basic hygiene: clear headline, credible experience descriptions and enough detail to understand the work. A personal site is stronger because it can link directly to projects, code, analyses, writing, demos or other work products. The goal is not performative busyness; it is reducing the distance between a claim and its evidence. Encourage the room to exploit the builder advantage of being in the Faculty of Science.<br><br><span class=\"src\">[Sources] CV-versus-demonstration framing and showcase guidance: speaker-provided reference slide and brief.</span>"
+  });
+
+  /* ───────────────────────── 18 · QUESTIONS ───────────────────────── */
+  S.push({
+    act: "Closing", wp: "Open questions", title: "Questions", min: 10,
+    html:
+      '<div class="stack" style="gap:28px">' +
+        '<div class="lbl" style="color:var(--brick)">Open questions</div>' +
+        '<div class="row mid" style="gap:70px">' +
+          '<h2 style="font-size:78px;line-height:1.02;flex:1">What do you want<br>to unpack?</h2>' +
+          '<div style="flex:0 0 auto;text-align:center">' +
+            '<img src="../assets/QR Code for NUS FoS Career Talk.png" alt="Scan to ask a question in Slido" style="width:210px;height:210px;display:block;padding:10px;background:#fff;border:1px solid var(--line);border-radius:6px">' +
+            '<div class="lbl" style="margin-top:10px;color:var(--muted)">scan for Slido</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:baseline">' +
+          '<div class="stmt" style="font-size:28px">Challenge the premise. Ask about the messy bit.</div>' +
+          '<div class="lbl" style="color:var(--ochre);text-align:right;line-height:1.8">career pivots &nbsp;&middot;&nbsp; data careers<br>AI + analytics &nbsp;&middot;&nbsp; delivery marketplaces</div>' +
+        '</div>' +
+      '</div>',
+    notes: "Open the floor and invite questions through Slido as well as from the room. If the room is slow to start, use the prompts on the right: career pivots, Analytics Engineering and data careers, AI&rsquo;s effect on analytics, or the realities of food-delivery marketplaces. Leave enough time for follow-ups rather than trying to cover every topic.<br><br><span class=\"src\">[Sources] Open-questions close and Slido QR: speaker-provided brief and asset.</span>"
   });
 
   /* ───────────────────────── engine ───────────────────────── */
@@ -609,8 +942,8 @@ S.push({
     var t = 0;
     S.forEach(function (d) { t += d.min; });
     document.getElementById("gh").innerHTML =
-      "Act I — click to jump · Esc to close &nbsp;&nbsp;|&nbsp;&nbsp; <b style=\"color:var(--pine)\">" +
-      t + " min</b> of the 25-minute talk &nbsp;·&nbsp; " + (25 - t) + " min left for Acts II\u2013IV";
+      "Deck map — click to jump · Esc to close &nbsp;&nbsp;|&nbsp;&nbsp; <b style=\"color:var(--pine)\">" +
+      t + " min</b> planned for the 45-minute session";
   }
 
   function buildGrid() {

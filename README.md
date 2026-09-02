@@ -3,9 +3,10 @@
 A 45-minute talk to ~160 MSc and PhD students at the NUS Faculty of Science.
 Self-contained HTML deck, presented from a browser.
 
-**Act I is built. Acts II–IV are not.** See [HANDOFF.md](HANDOFF.md) before
-touching anything — it carries the constraints, the decisions already made, and
-the things that will get you shouted at if you ignore them.
+The full 18-slide talk is built, including audience interaction, the career
+trail, the food-delivery and data craft sections, closing advice, and Q&A.
+
+**Public deck:** <https://bharath-cero.github.io/nus-career-talk/>
 
 ---
 
@@ -16,7 +17,8 @@ python3 src/build.py          # no dependencies, stdlib only
 open dist/NUS_Act1.html       # or just double-click it
 ```
 
-The built deck is one file with no external assets except Google Fonts. The
+The build also writes `index.html`, which is the GitHub Pages entry point. The
+built deck is one file with no external assets except Google Fonts. The
 editable source page loads its vendored logos from `assets/logos/`; the build
 embeds those same files as data URIs. It degrades to system fonts if the venue
 wifi is down.
@@ -34,14 +36,15 @@ wifi is down.
 | `F` | fullscreen |
 | click | right 75% = next, left 25% = back |
 
-Beats matter: the deck is 7 slides with 23 timed reveals, so nothing appears on
-screen before it has been said out loud.
+Beats matter: slides with staged content gate `→` through their reveals before
+advancing. Slides intended to remain static have no reveal steps.
 
 ## Layout
 
 ```
 src/act1.html      the deck — content, styles and engine in one file
 src/build.py       injects QR codes, emits both dist/ variants
+index.html         generated standalone deck served by GitHub Pages
 tools/qrgen.py     QR encoder (byte mode, ECC M, versions 1–10)
 assets/logos/      vendored official brand marks, embedded by the build
 dist/              build output, committed so the deck is presentable from a clone
